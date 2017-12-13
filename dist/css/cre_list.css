@@ -1,0 +1,135 @@
+
+/*贷款推荐*/
+
+/*credit_list*/
+.credit_list li .top {
+	border-bottom:1px solid #e9e9e9;
+}
+.credit_list li .top , .credit_list li .bottom{
+     padding:0 .11rem .09rem;
+     
+	 
+}
+.credit_list li{
+	background:#fff;
+}
+.credit_list li .top .stages{
+	display:flex;
+	flex-direction:row;
+	justify-content:space-between;
+	flex-wrap:wrap;
+} 
+.credit_list li .top .stages .left{
+	padding-left:.61rem;
+	position:relative;
+	width:65%;
+	box-sizing:border-box;
+}
+.credit_list li .top .stages .left .img_icon{ 
+    display:block;
+    width:.41rem;
+    height:.41rem;
+    border-radius:50%;
+    position:absolute;
+    top:50%;
+    left:0;
+    transform:translateY(-50%);
+
+
+}
+.credit_list li .top .stages .left span{
+
+	font:.16rem/.6rem '微软雅黑';
+	color:#2d2d2d;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 1;
+	overflow: hidden;
+	text-overflow:ellipsis;
+}
+.credit_list li .top .stages .right{
+	width:35%;
+	box-sizing:border-box;
+	padding-right:.2rem;
+	position:relative;
+}
+.credit_list li .top .stages .right img{
+	display:block;
+    width:.13rem;
+    position:absolute;
+    top:50%;
+    right:0;
+    transform:translateY(-50%);
+}
+.credit_list li .top .stages .right span{
+	display:block;
+	font:.13rem/.6rem '微软雅黑';
+	color:#6e6e6e;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 1;
+	overflow: hidden;
+	text-overflow:ellipsis;
+	text-align:right;
+}
+
+/*rate*/
+.rate{
+	display:flex;
+	flex-direction:row;
+	justify-content:space-between;
+	flex-wrap:wrap;
+	width:100%;
+}
+.rate span{
+	display:block;
+	font:.14rem/.19rem '微软雅黑';
+	color:#6e6e6e;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 1;
+	overflow: hidden;
+	text-overflow:ellipsis;
+	text-align:right;
+	
+}
+.rate span i{
+	color:#ff6254;
+}
+.rate .left , .rate .right{
+	width:30%;
+} 
+.rate .left{
+	text-align:left;
+}
+.rate .right{
+	text-align:right;
+}
+.rate .center{
+	widht:40%;
+	text-align:center;
+}
+
+
+.credit_list li .bottom {
+	display:flex;
+	flex-direction:row;
+	justify-content:flex-start;
+	flex-wrap:wrap;
+	padding:.09rem .11rem;
+}
+.credit_list li .bottom  .mortgage{
+	display:inline-block;
+	font:.12rem/.18rem '微软雅黑';
+	color:#fff;
+	padding:0 .07rem;
+	background:#f8b6b8;
+	border-radius:.02rem;
+}
+.credit_list li .bottom  .grant{
+	display:inline-block;
+	font:.12rem/.18rem '微软雅黑';
+	color:#fff;
+	padding:0 .07rem;
+	background:#f7cbb2;
+	border-radius:.02rem;
+	margin-left:.08rem;
+}

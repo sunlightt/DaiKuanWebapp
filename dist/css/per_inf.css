@@ -1,0 +1,73 @@
+.parent {
+	min-height: 100%;
+	background: #f2f3f7;
+}
+
+
+/*public*/
+
+.line {
+	width: 100%;
+	height: .09rem;
+	background: #f2f3f7;
+}
+
+#header {
+	border-bottom: 1px solid #ff2600;
+}
+
+
+.inf_list{
+	padding-top:.09rem;
+}
+
+.inf_list li{
+	padding:0 .17rem;
+	background:#fff;
+	border-top:1px solid #e9e9e9;
+
+}
+.inf_list li:first-child{
+	border-top:none;
+}
+.inf_list li label{
+	display:flex;
+	flex-direction: row;
+	justify-content:space-between;
+	flex-wrap:wrap;
+}
+.inf_list li .left{
+	display:block;
+	flex:3;
+	font:.14rem/.58rem '微软雅黑';
+	color:#6e6e6e;
+}
+.inf_list li .right{
+	display:block;
+	flex:8;
+}
+.inf_list li .right input{
+	display:block;
+	width:100%;
+	height:.58rem;
+	font:.14rem/.58rem '微软雅黑';
+	color:#6e6e6e;
+}
+ 
+
+/*application*/
+.application{
+	padding:.59rem 0;
+}
+.application button{
+     display:block;
+     width:70%;
+     font:.14rem/.37rem '微软雅黑';
+     color:#fff;
+     text-align:center;
+     background:#2fb9c3;
+     border:none;
+     margin:0 auto;
+     border-radius:.1rem;
+
+}

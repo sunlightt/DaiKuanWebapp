@@ -1,0 +1,102 @@
+{
+	"index.html": {
+		"resources": [
+			"dist/img/service.png",
+			"dist/img/recommend1.png",
+			"dist/img/credit.png",
+			"dist/img/broadcast.png",
+			"js/immersed.js",
+			"js/common.js",
+			"dist/js/index.js",
+			"dist/img/hot.png",
+			"css/common.css",
+			"dist/img/banner.png",
+			"dist/css/index.css",
+			"dist/img/activity.png",
+			"js/update.js",
+			"js/shortcut.js",
+			"dist/img/grouping1.png",
+			"dist/css/cre_index.css",
+			"dist/js/base.js",
+			"dist/img/credit_query.png",
+			"dist/js/vue_mian.js",
+			"dist/js/index1.js",
+			"dist/js/ser_index.js",
+			"swipeslider/css/style.css",
+			"swipeslider/js/swipeslider.min.js",
+			"dist/img/per_bg.png",
+			"swipeslider/css/swipeslider.css",
+			"dist/css/per_indx.css",
+			"dist/js/jquery-2.2.4.min.js",
+			"dist/img/service1.png",
+			"dist/img/recommend.png",
+			"dist/img/grouping.png"
+		],
+		"refer": [
+			"pages/credit/cre_index.html",
+			"pages/credit/cre_list.html",
+			"pages/credit/cre_dateils.html",
+			"test.html",
+			"pages/blank_page/webview_embed.html"
+		]
+	},
+	"pages/credit/cre_index.html": {
+		"resources": [
+			"dist/img/service.png",
+			"dist/img/recommend.png",
+			"dist/css/cre_index.css",
+			"js/immersed.js",
+			"js/common.js",
+			"dist/js/index.js",
+			"dist/img/hot.png",
+			"css/common.css",
+			"dist/img/activity.png",
+			"dist/img/credit1.png",
+			"js/update.js",
+			"js/shortcut.js",
+			"dist/img/grouping1.png"
+		]
+	},
+	"pages/credit/cre_list.html": {
+		"resources": [
+			"dist/css/cre_list.css",
+			"dist/js/jquery-2.2.4.min.js",
+			"js/common.js",
+			"dist/img/hot.png",
+			"css/common.css",
+			"dist/img/activity.png",
+			"js/update.js",
+			"js/shortcut.js",
+			"js/immersed.js"
+		]
+	},
+	"pages/credit/cre_dateils.html": {
+		"resources": [
+			"dist/css/cre_dateils.css",
+			"dist/img/time.png",
+			"dist/img/credit_icon.png",
+			"dist/js/cre_dateils.js",
+			"dist/js/jquery-2.2.4.min.js",
+			"js/common.js",
+			"css/common.css",
+			"dist/img/activity.png",
+			"js/update.js",
+			"js/shortcut.js",
+			"js/immersed.js"
+		]
+	},
+	"test.html": {
+		"resources": [
+			"js/common.js",
+			"css/common.css",
+			"js/immersed.js"
+		]
+	},
+	"pages/blank_page/webview_embed.html": {
+		"resources": [
+			"js/common.js",
+			"css/common.css",
+			"js/immersed.js"
+		]
+	}
+}
