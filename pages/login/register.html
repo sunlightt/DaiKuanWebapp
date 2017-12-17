@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>首页</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+		<meta name="misapplication-tap-highlight" content="no" />
+		<meta name="HandheldFriendly" content="true" />
+		<meta name="MobileOptimized" content="320" />
+		<link rel="stylesheet" href="../../css/common.css" />
+		<link rel="stylesheet" href="../../dist/css/register.css" />
+	</head>
+
+	<body>
+		<header id="header">
+			<div id="back" class="nvbt iback" onclick="back()"></div>
+			<div class="nvtt">信用贷款</div>
+			<!--<div class="nvbt iabout" onclick="clicked('about.html','zoom-fade-out',true)"></div>-->
+		</header>
+		<div class="parent" id="register">
+            <!--登录容器-->
+            <div class="login_container">
+            	<form action="javascript:;">
+            		<!--注册账号-->
+            		<div class="option">
+            			<div class="input_group">
+            				<label for="number">手机号</label>
+            				<input type="number"  placeholder="输入手机号" id="number"  v-model:value="number"/>
+            			</div>
+            			<div class="input_group">
+            				<label for="test">验证码</label>
+            				<input type="number"  placeholder="输入验证码" id="test" v-model:value="test_code"/>
+            				<span class="get_code" v-on:click="get_testcode">获取验证码</span>
+            			</div>
+            			<div class="input_group">
+            				<label for="password">密码</label>
+            				<input type="number"  placeholder="设置您的登录密码" id="password" v-model:value="password"/>
+            			</div>
+            		    <div class="input_group agremment">
+            				<label><input type="checkbox" v-model="agremment"/></label>
+            				<span id='log_agremment.html' onclick="clicked(this.id)">我已同意 《借款协议》</span> 
+            			</div>
+            			<div class="sub_wrap">
+            				<button v-on:click="register">注册</button>
+            			</div>
+            		</div>
+            	    <div class="go_register" id="login.html">
+            	    	<p id="login.html" onclick="clicked(this.id)">已有账号，请登录</p>
+            	    </div>
+            	</form>
+            </div>
+		</div>
+	</body>
+
+    <script type="text/javascript" src="../../dist/js/jquery-2.2.4.min.js"></script>
+    <script type="text/javascript" src="../../dist/js/base.js" ></script>
+
+	<script type="text/javascript" src="../../js/common.js"></script>
+	<script type="text/javascript" src="../../js/update.js"></script>
+	<script type="text/javascript" src="../../js/immersed.js"></script>
+	<script type="text/javascript" src="../../js/shortcut.js"></script>
+	
+	<!---->
+	<script src="https://cdn.bootcss.com/vue/2.4.4/vue.js"></script>
+
+	<script type="text/javascript" src="../../dist/js/register.js"></script>
+
+
+</html>

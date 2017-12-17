@@ -1,7 +1,7 @@
 ﻿(function(w) {
 	// 空函数
 	function shield() {
-//		return false;
+		//		return false;
 	}
 	document.addEventListener('touchstart', shield, false); //取消浏览器的所有事件，使得active的样式在手机上正常生效
 	document.oncontextmenu = shield; //屏蔽选择函数
@@ -10,7 +10,15 @@
 		as = 'pop-in';
 
 	function plusReady() {
+		plus.webview.currentWebview().setStyle({
+			softinputMode: "adjustResize" // 弹出软键盘时自动改变webview的高度
+		});
+
+		plus.navigator.setLogs(true);
+		
 		ws = plus.webview.currentWebview();
+		//		ws.setBounce({position:{top:'100px'},changeoffset:{top:'44px'}});
+
 		// Android处理返回键
 		plus.key.addEventListener('backbutton', function() {
 			back();
@@ -19,8 +27,8 @@
 	}
 	if(w.plus) {
 		plusReady();
+		console.log(w.plus);
 	} else {
-
 		document.addEventListener('plusready', plusReady, false);
 	}
 	// DOMContentLoaded事件处理
@@ -82,19 +90,44 @@
 		}
 		return null;
 	};
-	
+
 	//传参跳转
-	
-	w.clicked_canshu = function(id, canshu, wa, ns, ws) {
+	w.clicked_canshu = function(obj, id, wa, ns, ws) {
 		if(openw) { //避免多次打开同一个页面
 			return null;
 		}
-		console.log(id);
-		if(canshu){
-			console.log(canshu);
-			return;
+
+		//外部链接
+
+		if($(obj).attr('url_path')) {
+
+			window.localStorage.setItem('url_path', $(obj).attr('url_path'));
 		}
-		return;
+
+		//每个列表项对应的id
+		var credit_id = null;
+		if($(obj).attr('credit_id')) {
+			credit_id = $(obj).attr('credit_id');
+		}
+
+		if($(obj).attr('ser_url')) {
+			//切换请求url
+
+			if(window.localStorage.getItem('ser_url')) {
+				window.localStorage.removeItem('ser_url');
+			}
+			window.localStorage.setItem('ser_url', $(obj).attr('ser_url'));
+		} else {
+			if(window.localStorage.getItem('ser_url')) {
+				window.localStorage.removeItem('ser_url');
+			}
+		}
+
+		if(window.localStorage.getItem('credit_id')) {
+			window.localStorage.removeItem('credit_id');
+		}
+		window.localStorage.setItem('credit_id', credit_id);
+
 		if(w.plus) {
 			wa && (waiting = plus.nativeUI.showWaiting());
 			ws = ws || {};
@@ -117,17 +150,129 @@
 		}
 		return null;
 	};
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
+	w.application = function(obj, id, wa, ns, ws) {
+		if(openw) { //避免多次打开同一个页面
+			return null;
+		}
+
+		//更改页面跳转路径
+		//		var page_path ='cre_application.html';
+		var page_path = null;
+
+		//注册用户信息
+		var user_json = null;
+
+		//认证状态
+		var authen_status = null; // 2 认证过   1 未认证
+
+		//判断用户是否登录
+		if(window.localStorage.getItem('login_status') && window.localStorage.getItem('login_status') == 'login') {
+
+			//判断用户登录后是否验证
+			if(window.localStorage.getItem('user_inf')) {
+
+				user_json = JSON.parse(window.localStorage.getItem('user_inf'));
+
+				$.ajax({
+					type: "GET",
+					url: globalData.url + '/index.php/api/Users/is_rz',
+					async: false,
+					data: {
+						uid: user_json.id
+					},
+					//				dataType:"jsonp",
+					success: function(res) {
+						//  res.status 207 认证   208未认证
+						var res = JSON.parse(res);
+						console.log(res);
+						if(res.status == 207) {
+							console.log(res);
+							window.localStorage.setItem('authen_status', 2);
+							authen_status = 2;
+
+							//认证过  进行贷款申请
+							$.ajax({
+								type: "GET",
+								url: globalData.url + '/index.php/api/Index/apply_dai',
+								data: {
+									uid: user_json.id,
+									did: window.localStorage.getItem('did'),
+									dai_money: window.localStorage.getItem('dai_money'),
+									dai_time: window.localStorage.getItem('dai_time'),
+									is_sel_day: window.localStorage.getItem('is_sel_day'),
+									rate: window.localStorage.getItem('rate'),
+									money_per: window.localStorage.getItem('money_per'),
+									zong_lixi: window.localStorage.getItem('zong_lixi')
+								},
+								//								async: false,
+								success: function(response) {
+									var response = JSON.parse(response);
+									if(response.status == 200) {
+
+										alert('申请成功');
+										return;
+									} else {
+										alert('申请失败');
+										return;
+									}
+								}
+							});
+
+							return;
+
+						} else if(res.status == 208) {
+
+							window.localStorage.setItem('authen_status', 1);
+
+							authen_status = 1;
+
+							page_path = 'cre_application.html';
+
+							console.log(208);
+
+						}
+					}
+				});
+
+				//				return;
+
+			} else {
+
+				page_path = id;
+			}
+
+		} else {
+			page_path = '../login/login.html';
+		}
+
+		console.log(page_path);
+
+		//		return;
+
+		if(w.plus) {
+			wa && (waiting = plus.nativeUI.showWaiting());
+			ws = ws || {};
+			ws.scrollIndicator || (ws.scrollIndicator = 'none');
+			ws.scalable || (ws.scalable = false);
+			var pre = ''; //'http://192.168.1.178:8080/h5/';
+			openw = plus.webview.create(pre + page_path, page_path, ws);
+			ns || openw.addEventListener('loaded', function() { //页面加载完成后才显示
+				//		setTimeout(function(){//延后显示可避免低端机上动画时白屏
+				openw.show(as);
+				closeWaiting();
+				//		},200);
+			}, false);
+			openw.addEventListener('close', function() { //页面关闭后可再次打开
+				openw = null;
+			}, false);
+			return openw;
+		} else {
+			w.open(page_path);
+		}
+		return null;
+	}
+
 	w.openDoc = function(t, c) {
 		var d = plus.webview.getWebviewById('document');
 		if(d) {
@@ -552,7 +697,7 @@
 		var length;
 
 		// Issue #160: on iOS 7, some input elements (e.g. date datetime month) throw a vague TypeError on setSelectionRange. These elements don't have an integer value for the selectionStart and selectionEnd properties, but unfortunately that can't be used for detection because accessing the properties also throws a TypeError. Just check the type instead. Filed as Apple bug #15122724.
-		if(deviceIsIOS && targetElement.setSelectionRange && targetElement.type.indexOf('date') !== 0 && targetElement.type !== 'time' && targetElement.type !== 'month' && targetElement.type !== 'number' ) {
+		if(deviceIsIOS && targetElement.setSelectionRange && targetElement.type.indexOf('date') !== 0 && targetElement.type !== 'time' && targetElement.type !== 'month' && targetElement.type !== 'number') {
 			length = targetElement.value.length;
 			targetElement.setSelectionRange(length, length);
 		} else {

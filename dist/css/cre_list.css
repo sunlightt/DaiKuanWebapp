@@ -1,6 +1,9 @@
 
 /*贷款推荐*/
 
+.parent{
+	background:#f2f3f7;
+}
 /*credit_list*/
 .credit_list li .top {
 	border-bottom:1px solid #e9e9e9;

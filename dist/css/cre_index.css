@@ -182,7 +182,7 @@
 	text-align:right;
 }
 .rate .center{
-	widht:40%;
+	width:40%;
 	text-align:center;
 }
 
@@ -258,6 +258,15 @@
 .credit_set .set_inf li .input input{
 	display:block;
 	width:100%;
+	font:.14rem/.28rem '微软雅黑';
+	color:#373737;
+	text-align:center;
+}
+
+.credit_set .set_inf li .input select{
+	display:block;
+	width:100%;
+	height:.28rem;
 	font:.14rem/.28rem '微软雅黑';
 	color:#373737;
 	text-align:center;

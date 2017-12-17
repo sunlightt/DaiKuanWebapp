@@ -1,0 +1,18 @@
+
+
+.ag_option{
+	padding:0 .1rem;
+}
+.ag_option h2{
+	
+	font:.2rem/.32rem '微软雅黑';
+	color:#333;
+	text-align:left;
+	
+}
+.ag_option p{
+	font:.16rem/.3rem '微软雅黑';
+	color:#333;
+	text-align:justify;
+	text-indent:2em;
+}

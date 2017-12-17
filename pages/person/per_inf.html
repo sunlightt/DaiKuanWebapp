@@ -19,93 +19,90 @@
 			<div class="nvtt">信用贷款</div>
 			<!--<div class="nvbt iabout" onclick="clicked('about.html','zoom-fade-out',true)"></div>-->
 		</header>
-		<div class="parent">
-			<!--inf_list-->
-			<div class="inf_wrap">
-				<form action="javascript:;">
-					<ul class="inf_list">
-						<li>
-							<label>
+		<div id="content">
+			<div class="parent" id="per_inf">
+				<!--inf_list-->
+				<div class="inf_wrap">
+					<form action="javascript:;">
+						<ul class="inf_list">
+							<li>
+								<label>
 							 <span class="left">姓名</span>
 	                        <div class="right">
-	                        	<input type="text"  name="username"/>
+	                        	<input type="text"  name="username" v-model="name" readonly="readonly"/>
 	                        </div>
 						</label>
 
-						</li>
-						<li>
-							<label>
+							</li>
+							<li>
+								<label>
 							 <span class="left">身份证号</span>
 	                        <div class="right">
-	                        	<input type="text"  name="username"/>
+	                        	<input type="text"  name="username" v-model="idcard"   readonly="readonly"/>
 	                        </div>
 						</label>
-						</li>
-						<li>
-							<label>
+							</li>
+							<li>
+								<label>
 							 <span class="left">手机号</span>
 	                        <div class="right">
-	                        	<input type="text"  name="username"/>
+	                        	<input type="text"  name="username" v-model="mobile"  readonly="readonly"/>
 	                        </div>
 						</label>
-						</li>
-						<li>
-							<label>
+							</li>
+							<li>
+								<label>
 							 <span class="left">职业身份</span>
 	                        <div class="right">
-	                        	<input type="text"  name="username"/>
+	                        	<!--<input type="text"  name="username"/>-->
+	                        	<select v-on:change="change_identity()" v-model="my_identity">
+									<option v-bind:value="item.id" v-for="(item , index) in my_identity_arr">{{item.title}}</option>
+								</select>
 	                        </div>
 						</label>
-						</li>
-						<li>
-							<label>
+							</li>
+							<li>
+								<label>
 							 <span class="left">有无信用卡</span>
 	                        <div class="right">
-	                        	<input type="text"  name="username"/>
+	                        	<!--<input type="text"  name="username"/>-->
+	                        	<select v-on:change="change_card_arr()" v-model="is_card">
+									<option v-bind:value="item.id" v-for="(item , index) in is_card_arr">{{item.title}}</option>
+								</select>
 	                        </div>
 						</label>
-						</li>
-						<li>
-							<label>
+							</li>
+							<li>
+								<label>
 							 <span class="left">手机使用时间</span>
 	                        <div class="right">
-	                        	<input type="text"  name="username"/>
+	                        	<!--<input type="text"  name="username"/>-->
+	                        	<select v-on:change="change_time_arr()" v-model="is_mobile_time">
+									<option v-bind:value="item.id" v-for="(item , index) in is_mobile_time_arr">{{item.title}}</option>
+								</select>
 	                        </div>
 						</label>
-						</li>
-					</ul>
-					<!--<button class="submit">保存资料</button>-->
-					<div class="application">
-						<button>确定</button>
-					</div>
-				</form>
+							</li>
+						</ul>
+						<!--<button class="submit">保存资料</button>-->
+						<div class="application">
+							<button v-on:click="modify_submit">保存资料</button>
+						</div>
+					</form>
+				</div>
 			</div>
 		</div>
- 
-		<!--footer-->
-		<!--<div class="footer">
-			<ul>
-				<li>
-					<img src="../../dist/img/recommend.png" alt="" />
-				</li>
-				<li>
-					<img src="../../dist/img/credit.png" alt="" />
-				</li>
-				<li>
-					<img src="../../dist/img/service.png" alt="" />
-				</li>
-				<li>
-					<img src="../../dist/img/grouping.png" alt="" />
-				</li>
-			</ul>
-		</div>-->
-
 	</body>
+
+	<script type="text/javascript" src="../../dist/js/jquery-2.2.4.min.js"></script>
+	<script type="text/javascript" src="../../dist/js/base.js"></script>
+	<script src="https://cdn.bootcss.com/vue/2.4.4/vue.js"></script>
 
 	<script type="text/javascript" src="../../js/common.js"></script>
 	<script type="text/javascript" src="../../js/update.js"></script>
 	<script type="text/javascript" src="../../js/immersed.js"></script>
 	<script type="text/javascript" src="../../js/shortcut.js"></script>
-	
+
+	<script type="text/javascript" src="../../dist/js/per_inf.js"></script>
 
 </html>

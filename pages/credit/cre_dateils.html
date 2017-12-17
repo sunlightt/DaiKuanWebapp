@@ -19,109 +19,117 @@
 			<div class="nvtt">信用贷款</div>
 			<!--<div class="nvbt iabout" onclick="clicked('about.html','zoom-fade-out',true)"></div>-->
 		</header>
-		<div class="parent">
+		<div>
+			<div class="parent">
 
-			<form action="javascript:;">
+				<form action="javascript:;">
 
-				<div class="content" id="calculation">
-					<!--成功率-->
-					<div class="success_rate">
-						<div class="wrap">
-							<img src="../../dist/img/activity.png" alt="" />
-							<h2>成功率 : <span>98%</span></h2>
-							<h2>申请人数 : <span>15441</span></h2>
-							<p>开户当天即可放款，提款随贷随放</p>
+					<div class="content" id="calculation">
+						<!--成功率-->
+						<div class="success_rate">
+							<div class="wrap">
+								<img v-bind:src="img_src" alt="" />
+								<h2>成功率 : <span>{{success_rate}}%</span></h2>
+								<h2>申请人数 : <span>{{apply_num}}</span></h2>
+								<p>{{review_msg}}</p>
+							</div>
 						</div>
-					</div>
-					<!--贷款范围-->
-					<div class="credit_range_wrap">
-						<div class="credit_range">
-							<div class="top">
-								<span class="range">贷款范围: 500-20000</span>
-								<span class="date">贷款期限: 3月-12月</span>
-							</div>
-							<div class="middle">
-								<div class="left">
-									<input type="number" name="money" v-model="loan_range"  v-on:input="select_creditvalue()" />
-									<span>元</span>
+						<!--贷款范围-->
+						<div class="credit_range_wrap">
+							<div class="credit_range">
+								<div class="top">
+									<span class="range">贷款范围: {{min_money}}元-{{max_money}}元</span>
+									<span class="date" v-if="is_rate==1">贷款期限: {{min_day}}日-{{max_day}}日</span>
+									<span class="date" v-else>贷款期限: {{min_day}}月-{{min_day}}月</span>
 								</div>
-								<div class="right" onclick="actionsheet()">
-									<!--<input type="text" name="money" readonly="readonly" class="time" v-model="term" />-->
-								    <div class="select_wrap">
-								    	<select v-on:change="changeselect()" v-model="term">
-											<option v-bind:value="item" v-for="(item , index) in date_arr">{{item}}</option>
-										</select>
-								    </div>
-									<!--<img src="../../dist/img/Triangle2.png" alt="" class="trangle" />-->
-									<span>月</span>
+								<div class="middle">
+									<div class="left">
+										<input type="number" name="money" v-model="loan_range" v-on:input="select_creditvalue()" />
+										<span>元</span>
+									</div>
+									<div class="right">
+										<!--<input type="text" name="money" readonly="readonly" class="time" v-model="term" />-->
+										<div class="select_wrap">
+											<select v-on:change="changeselect()" v-model="term">
+												<option v-bind:value="item" v-for="(item , index) in date_arr">{{item}}</option>
+											</select>
+										</div>
+										<!--<img src="../../dist/img/Triangle2.png" alt="" class="trangle" />-->
+										<span v-if="is_rate==1">日</span>
+										<span v-else>月</span>
+									</div>
 								</div>
-							</div>
-							<div class="foot">
-								<ul>
-									<li class="repayment">
-										<strong><i>{{repayment}}</i>元</strong>
-										<span>月还款</span>
-									</li>
-									<li class="Total_interest">
-										<strong><i>{{Total_interest}}</i>元</strong>
-										<span>总利息</span>
-									</li>
-									<li class="month_rate">
-										<!--<strong><i>0.95</i>%</strong>
+								<div class="foot">
+									<ul>
+										<li class="repayment">
+											<strong><i>{{repayment}}</i>元</strong>
+											<span v-if="is_rate==1">日还款</span>
+											<span v-else>月还款</span>
+										</li>
+										<li class="Total_interest">
+											<strong><i>{{Total_interest}}</i>元</strong>
+											<span>总利息</span>
+										</li>
+										<li class="month_rate">
+											<!--<strong><i>0.95</i>%</strong>
 										<span>月利率</span>-->
-										<strong><i>{{month_rate}}</i>%</strong>
-										<span>月利率</span>
-									</li>
-								</ul>
+											<strong><i>{{month_rate}}</i>%</strong>
+											<span v-if="is_rate==1">日利率</span>
+											<span v-else>月利率</span>
+										</li>
+									</ul>
+								</div>
 							</div>
 						</div>
+						<!--流程-->
+						<p id="text"></p>
+						<div class="process">
+							<div class="option">
+								<h2>审核说明</h2>
+								<div class="msg">
+									<p>{{allData.review_msg}}</p>
+									<!--<p>2. 审核周期: 1个工作日内 最快15分钟</p>
+									<p>3. 放款时间: 15秒</p>
+									<p>4. 还款方式: APP还款</p>-->
+								</div>
+
+							</div>
+							<div class="option">
+								<h2>审核流程</h2>
+								<div class="msg">
+									<p>{{allData.flow_msg}}</p>
+									<!--<p>2. 审核周期: 1个工作日内 最快15分钟</p>
+									<p>3. 放款时间: 15秒</p>
+									<p>4. 还款方式: APP还款</p>-->
+								</div>
+
+							</div>
+							<div class="option">
+								<h2>审核条件</h2>
+								<div class="msg">
+									<p>{{allData.condition_msg}}</p>
+									<!--<p>2. 审核周期: 1个工作日内 最快15分钟</p>
+									<p>3. 放款时间: 15秒</p>
+									<p>4. 还款方式: APP还款</p>-->
+								</div>
+							</div>
+						</div>
+						<div class="application">
+							<button onclick="application(this,'cre_application.html')">立即申请</button>
+						</div>
+
 					</div>
-					<!--流程-->
-					<p id="text"></p>
-					<div class="process">
-						<div class="option">
-							<h2>审核说明</h2>
-							<div class="msg">
-								<p>1. 审核方式: 机审</p>
-								<p>2. 审核周期: 1个工作日内 最快15分钟</p>
-								<p>3. 放款时间: 15秒</p>
-								<p>4. 还款方式: APP还款</p>
-							</div>
 
-						</div>
-						<div class="option">
-							<h2>审核说明</h2>
-							<div class="msg">
-								<p>1. 审核方式: 机审</p>
-								<p>2. 审核周期: 1个工作日内 最快15分钟</p>
-								<p>3. 放款时间: 15秒</p>
-								<p>4. 还款方式: APP还款</p>
-							</div>
+				</form>
 
-						</div>
-						<div class="option">
-							<h2>审核说明</h2>
-							<div class="msg">
-								<p>1. 审核方式: 机审</p>
-								<p>2. 审核周期: 1个工作日内 最快15分钟</p>
-								<p>3. 放款时间: 15秒</p>
-								<p>4. 还款方式: APP还款</p>
-							</div>
-
-						</div>
-					</div>
-
-					<div class="application">
-						<button onclick="clicked(this.id)" id="cre_application.html">立即申请</button>
-					</div>
-
-				</div>
-
-			</form>
+			</div>
 
 		</div>
 
 	</body>
+
+	<script type="text/javascript" src="../../dist/js/jquery-2.2.4.min.js"></script>
+	<script type="text/javascript" src="../../dist/js/base.js"></script>
 
 	<script type="text/javascript" src="../../js/common.js"></script>
 	<script type="text/javascript" src="../../js/update.js"></script>
@@ -130,11 +138,10 @@
 
 	<!---->
 	<script src="https://cdn.bootcss.com/vue/2.4.4/vue.js"></script>
-	<script type="text/javascript" src="../../dist/js/jquery-2.2.4.min.js"></script>
+	<!--<script type="text/javascript" src="../../dist/js/jquery-2.2.4.min.js"></script>-->
 	<script type="text/javascript" src="../../dist/js/cre_dateils.js"></script>
 
 	<!--滑块组件-->
-	<script>
-	</script>
+	
 
 </html>

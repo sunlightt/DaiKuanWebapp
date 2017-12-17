@@ -37,7 +37,8 @@
 			"pages/credit/cre_list.html",
 			"pages/credit/cre_dateils.html",
 			"test.html",
-			"pages/blank_page/webview_embed.html"
+			"pages/blank_page/webview_embed.html",
+			"about.html"
 		]
 	},
 	"pages/credit/cre_index.html": {
@@ -95,6 +96,14 @@
 	"pages/blank_page/webview_embed.html": {
 		"resources": [
 			"js/common.js",
+			"css/common.css",
+			"js/immersed.js"
+		]
+	},
+	"about.html": {
+		"resources": [
+			"js/common.js",
+			"icon.png",
 			"css/common.css",
 			"js/immersed.js"
 		]

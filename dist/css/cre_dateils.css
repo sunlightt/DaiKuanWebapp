@@ -7,6 +7,11 @@ body{
 	
 }
 
+.parent{
+	/*padding:0 0 .41rem;*/
+}
+
+
 .content{
 	
 
@@ -263,6 +268,7 @@ body{
 .process .option .msg p{
 	 font:.13rem/.25rem '微软雅黑';
 	 color:#a1a1a1;
+	 text-align:left;
 }
 
 

@@ -6,6 +6,11 @@
 	background:#f2f3f7;
 }
 
+.parent{
+	/*padding: .42rem 0 .51rem;*/
+	padding: 0 0 .51rem;
+}
+
 
 #header {
 	border-bottom:1px solid #ff2600;
@@ -17,8 +22,6 @@
 	display:block;
 	width:100%;
 }
-
-
 
 
 /*credit_nav_wrap*/
@@ -272,7 +275,7 @@
 	text-align:right;
 }
 .rate .center{
-	widht:40%;
+	width:40%;
 	text-align:center;
 }
 

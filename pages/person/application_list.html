@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>首页</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+		<meta name="misapplication-tap-highlight" content="no" />
+		<meta name="HandheldFriendly" content="true" />
+		<meta name="MobileOptimized" content="320" />
+		<link rel="stylesheet" href="../../css/common.css" />
+		<link rel="stylesheet" href="../../dist/css/application_list.css" />
+	</head>
+
+	<body>
+		<header id="header">
+			<div id="back"  class="nvbt iback" onclick="back()"></div>
+			<div class="nvtt">信用贷款</div>
+			<!--<div class="nvbt iabout" onclick="clicked('about.html','zoom-fade-out',true)"></div>-->
+		</header>
+		<div class="parent" id="application_list">
+			<div class="container">
+				<ul>
+					<li v-for="(item , index) in data_list">
+				         <div class="left">
+				         	<span>贷款金额</span>
+				         	<span>{{item.dai_money}}元</span>
+				         </div>
+				         <div class="right">
+				         	<span>贷款期限</span>
+				         	<span>{{item.dai_time}}个月</span>
+				         </div>
+					</li>
+					<!--<li>
+				         <div class="left">
+				         	<span>贷款金额</span>
+				         	<span>1000元</span>
+				         </div>
+				         <div class="right">
+				         	<span>贷款期限</span>
+				         	<span>3个月</span>
+				         </div>
+					</li>-->
+				</ul>
+			</div>
+		</div>
+	</body>
+	
+	<script type="text/javascript" src="../../dist/js/jquery-2.2.4.min.js"></script>
+    <script type="text/javascript" src="../../dist/js/base.js" ></script>
+    <script src="https://cdn.bootcss.com/vue/2.4.4/vue.js"></script>
+
+	<script type="text/javascript" src="../../js/common.js"></script>
+	<script type="text/javascript" src="../../js/update.js"></script>
+	<script type="text/javascript" src="../../js/immersed.js"></script>
+	<script type="text/javascript" src="../../js/shortcut.js"></script>
+	
+	
+	<script type="text/javascript" src="../../dist/js/application_list.js"></script>
+	
+	
+</html>

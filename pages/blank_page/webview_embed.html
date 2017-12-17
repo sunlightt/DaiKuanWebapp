@@ -24,6 +24,10 @@
 			}
 			// 创建子Webview
 			function createEmbed() {
+				var url_path=null;
+				if(window.localStorage.getItem('url_path')){
+					url_path=window.localStorage.getItem('url_path');
+				}
 				var topoffset = '45px';
 				if(plus.navigator.isImmersedStatusbar()) { // 兼容immersed状态栏模式
 					topoffset = (Math.round(plus.navigator.getStatusbarHeight()) + 45) + 'px';
@@ -33,7 +37,7 @@
 					modal: false,
 					background: 'rgba(0,0,0,0)'
 				});
-				embed = plus.webview.create('https://www.baidu.com/', 'embed', {
+				embed = plus.webview.create(url_path, 'embed', {
 					top: topoffset,
 //					bottom: '0px',
                     bottom: '60px',
@@ -91,12 +95,14 @@
 	<body>
 		<header id="header">
 			<div class="nvbt iback" onclick="back(),plus.nativeUI.closeWaiting();"></div>
-			<div class="nvtt" style="visibility:hidden">
+			<!--<div class="nvtt" style="visibility:hidden">
 				<form action="?" method="get" onsubmit="openUrl();return false;">
 					<input id="url" type="url" value="http://m.weibo.cn/u/3196963860" />
 				</form>
-			</div>
-			<div class="nvbt" style="visibility:hidden" onclick="openUrl();">Go</div>
+			</div>-->
+			<div class="nvtt">信用贷款</div>
+			<!--<div class="nvbt" style="visibility:hidden" onclick="openUrl();">Go</div>-->
+			<div class="nvbt" style="visibility:hidden">Go</div>
 		</header>
 	</body>
 	<script type="text/javascript" src="../../js/immersed.js"></script>

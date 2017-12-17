@@ -19,159 +19,43 @@
 			<div class="nvtt">信用贷款</div>
 			<!--<div class="nvbt iabout" onclick="clicked('about.html','zoom-fade-out',true)"></div>-->
 		</header>
-		<div class="parent">
-
+		<div class="parent" id="cre_list">
 			<!--list-->
 			<div class="content">
 				<ul class="credit_list">
-					<li id="../../pages/credit/cre_dateils.html" onclick="clicked(this.id)">
+					<li onclick="clicked_canshu(this,'../../pages/credit/cre_dateils.html')" v-bind:credit_id="item.id" v-for="(item , index) in credit_list">
 						<div class="line"></div>
 						<div class="top">
 							<div class="stages">
 								<div class="left">
-									<img src="../../dist/img/activity.png" alt="" class="img_icon" />
-									<span>够范分期</span>
+									<img v-bind:src="item.pro_img" alt="" class="img_icon" />
+									<span>{{item.pro_name}}</span>
 								</div>
 								<div class="right">
-									<span>50160人已申请</span>
+									<span>{{item.apply_num}}人已申请</span>
 									<img src="../../dist/img/hot.png" alt="" />
 								</div>
 							</div>
 							<div class="rate">
-								<span class="left">日利率  <i>0.05%</i></span>
-								<span class="center">额度  <i>1000-10000元</i> </span>
-								<span class="right">成功率  <i>98%</i></span>
+								<span class="left" v-if="item.is_rate==1">日利率  <i>{{item.rate}}%</i></span>
+								<span class="left" v-else>月利率  <i>{{item.rate}}%</i></span>
+								<span class="center">额度  <i>{{item.min_money}}-{{item.max_money}}元</i> </span>
+								<span class="right">成功率  <i>{{item.success_rate}}%</i></span>
 							</div>
 						</div>
 						<div class="bottom">
-							<span class="mortgage">无抵押</span>
-							<span class="grant">30分钟快速放款!</span>
-						</div>
-					</li>
-					<li id="../../pages/credit/cre_dateils.html" onclick="clicked(this.id)">
-						<div class="line"></div>
-						<div class="top">
-							<div class="stages">
-								<div class="left">
-									<img src="../../dist/img/activity.png" alt="" class="img_icon" />
-									<span>够范分期</span>
-								</div>
-								<div class="right">
-									<span>50160人已申请</span>
-									<img src="../../dist/img/hot.png" alt="" />
-								</div>
-							</div>
-							<div class="rate">
-								<span class="left">日利率  <i>0.05%</i></span>
-								<span class="center">额度  <i>1000-10000元</i> </span>
-								<span class="right">成功率  <i>98%</i></span>
-							</div>
-						</div>
-						<div class="bottom">
-							<span class="mortgage">无抵押</span>
-							<span class="grant">30分钟快速放款!</span>
-						</div>
-					</li>
-					<li id="../../pages/credit/cre_dateils.html" onclick="clicked(this.id)">
-						<div class="line"></div>
-						<div class="top">
-							<div class="stages">
-								<div class="left">
-									<img src="../../dist/img/activity.png" alt="" class="img_icon" />
-									<span>够范分期</span>
-								</div>
-								<div class="right">
-									<span>50160人已申请</span>
-									<img src="../../dist/img/hot.png" alt="" />
-								</div>
-							</div>
-							<div class="rate">
-								<span class="left">日利率  <i>0.05%</i></span>
-								<span class="center">额度  <i>1000-10000元</i> </span>
-								<span class="right">成功率  <i>98%</i></span>
-							</div>
-						</div>
-						<div class="bottom">
-							<span class="mortgage">无抵押</span>
-							<span class="grant">30分钟快速放款!</span>
-						</div>
-					</li>
-					<li id="../../pages/credit/cre_dateils.html" onclick="clicked(this.id)">
-						<div class="line"></div>
-						<div class="top">
-							<div class="stages">
-								<div class="left">
-									<img src="../../dist/img/activity.png" alt="" class="img_icon" />
-									<span>够范分期</span>
-								</div>
-								<div class="right">
-									<span>50160人已申请</span>
-									<img src="../../dist/img/hot.png" alt="" />
-								</div>
-							</div>
-							<div class="rate">
-								<span class="left">日利率  <i>0.05%</i></span>
-								<span class="center">额度  <i>1000-10000元</i> </span>
-								<span class="right">成功率  <i>98%</i></span>
-							</div>
-						</div>
-						<div class="bottom">
-							<span class="mortgage">无抵押</span>
-							<span class="grant">30分钟快速放款!</span>
-						</div>
-					</li>
-					<li id="../../pages/credit/cre_dateils.html" onclick="clicked(this.id)">
-						<div class="line"></div>
-						<div class="top">
-							<div class="stages">
-								<div class="left">
-									<img src="../../dist/img/activity.png" alt="" class="img_icon" />
-									<span>够范分期</span>
-								</div>
-								<div class="right">
-									<span>50160人已申请</span>
-									<img src="../../dist/img/hot.png" alt="" />
-								</div>
-							</div>
-							<div class="rate">
-								<span class="left">日利率  <i>0.05%</i></span>
-								<span class="center">额度  <i>1000-10000元</i> </span>
-								<span class="right">成功率  <i>98%</i></span>
-							</div>
-						</div>
-						<div class="bottom">
-							<span class="mortgage">无抵押</span>
-							<span class="grant">30分钟快速放款!</span>
-						</div>
-					</li>
-					<li id="../../pages/credit/cre_dateils.html" onclick="clicked(this.id)">
-						<div class="line"></div>
-						<div class="top">
-							<div class="stages">
-								<div class="left">
-									<img src="../../dist/img/activity.png" alt="" class="img_icon" />
-									<span>够范分期</span>
-								</div>
-								<div class="right">
-									<span>50160人已申请</span>
-									<img src="../../dist/img/hot.png" alt="" />
-								</div>
-							</div>
-							<div class="rate">
-								<span class="left">日利率  <i>0.05%</i></span>
-								<span class="center">额度  <i>1000-10000元</i> </span>
-								<span class="right">成功率  <i>98%</i></span>
-							</div>
-						</div>
-						<div class="bottom">
-							<span class="mortgage">无抵押</span>
-							<span class="grant">30分钟快速放款!</span>
+							<span class="" v-for="(msg , i) in item.pro_des" v-bind:class="{'mortgage':i==0,'grant':i==1}">{{msg}}</span>
+							<!--<span class="grant">30分钟快速放款!</span>-->
 						</div>
 					</li>
 				</ul>
 			</div>
 		</div>
 	</body>
+
+	<script type="text/javascript" src="../../dist/js/jquery-2.2.4.min.js"></script>
+	<script type="text/javascript" src="../../dist/js/base.js"></script>
+
 	<script type="text/javascript" src="../../js/common.js"></script>
 	<script type="text/javascript" src="../../js/update.js"></script>
 	<script type="text/javascript" src="../../js/immersed.js"></script>
@@ -179,10 +63,7 @@
 
 	<!---->
 	<script src="https://cdn.bootcss.com/vue/2.4.4/vue.js"></script>
-	<script type="text/javascript" src="../../dist/js/jquery-2.2.4.min.js"></script>
 
-	<!--滑块组件-->
-	<script>
-	</script>
+	<script src="../../dist/js/cre_list.js"></script>
 
 </html>

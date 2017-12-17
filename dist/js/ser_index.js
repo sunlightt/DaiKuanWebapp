@@ -2,10 +2,8 @@
 
 window.onload=function(){
 	
-	
 	//初始化
 	init();
-	
 	
 }
 

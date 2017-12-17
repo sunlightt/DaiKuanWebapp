@@ -1,7 +1,13 @@
 (function(w) {
 
 	document.addEventListener('plusready', function() {
-		console.log("Immersed-UserAgent: " + navigator.userAgent);
+		var parent=document.querySelector(".parent");
+		parent.style.marginTop =(Math.round(plus.navigator.getStatusbarHeight()) + 45) + 'px';
+//		if(plus.device.vendor.indexOf('Apple')!=-1){
+//			parent.style.marginTop =0 + 'px';
+//		}else{
+//			parent.style.marginTop =(Math.round(plus.navigator.getStatusbarHeight()) + 45) + 'px';
+//		}
 	}, false);
 
 	var immersed = 0;
@@ -25,5 +31,10 @@
 	t && (t.style.marginTop = immersed + 'px');
 	t = document.getElementById('map');
 	t && (t.style.marginTop = immersed + 'px');
+	
+	
+	var parent=document.querySelector(".parent");
+//	parent.style.marginTop =immersed + 'px';
+//	parent.style.marginTop =(Math.round(plus.navigator.getStatusbarHeight()) + 45) + 'px';
 
 })(window);

@@ -12,13 +12,14 @@
 		<link rel="stylesheet" href="../../css/common.css" />
 		<link rel="stylesheet" href="../../dist/css/cre_application.css" />
 	</head>
+
 	<body>
 		<header id="header">
 			<div id="back" class="nvbt iback" onclick="back()"></div>
 			<div class="nvtt">信用贷款</div>
 			<!--<div class="nvbt iabout" onclick="clicked('about.html','zoom-fade-out',true)"></div>-->
 		</header>
-		<div class="parent">
+		<div class="parent" id="application">
 			<form action="javascript:;">
 				<div class="content">
 					<div class="option">
@@ -26,11 +27,11 @@
                        	    	<img src="../../dist/img/occupation.png" alt="" />
                        	    	请选择您的职业身份
                        	</h2>
-						<ul class="select">
-							<li class="active">
-								<span>打工族</span>
+						<ul class="select select_identity">
+							<li v-for="(item , index) in identity" v-bind:class="{active:index==0}" v-bind:iden_id="item.id" onclick="select_identity(this)">
+								<span>{{item.title}}</span>
 							</li>
-							<li>
+							<!--<li>
 								<span>企业主</span>
 							</li>
 							<li>
@@ -38,7 +39,7 @@
 							</li>
 							<li>
 								<span>自由职业</span>
-							</li>
+							</li>-->
 						</ul>
 					</div>
 					<div class="option credit">
@@ -46,13 +47,13 @@
                        	    	<img src="../../dist/img/credit_card.png" alt="" />
                        	    	您是否有信用卡
                        	    </h2>
-						<ul class="select">
-							<li class="active">
-								<span>有</span>
+						<ul class="select select_card_id">
+							<li  v-for="(item , index) in is_card" v-bind:class="{active:index==0}" v-bind:card_id="item.id" onclick="select_is_card(this)">
+								<span>{{item.title}}</span>
 							</li>
-							<li>
+							<!--<li>
 								<span>无</span>
-							</li>
+							</li>-->
 
 						</ul>
 					</div>
@@ -61,40 +62,24 @@
                        	    	<img src="../../dist/img/inf.png" alt="" />
                        	    	请填写您的基本信息
                        	    </h2>
-						<!--<ul class="select">
-                       	    	<li class="active">
-                       	    		<span>有</span>
-                       	    	</li>
-                       	    	<li>
-                       	    		<span>无</span>
-                       	    	</li>
-                       	    	
-                       	    </ul>-->
+
 						<div class="per_inf">
 							<div class="usename">
-								<input type="text" name="usename" placeholder="请填写姓名" />
+								<input type="text" name="usename" placeholder="请填写姓名" v-model="name" />
 							</div>
 							<div class="number">
-								<input type="number" name="number" placeholder="请输入您的手机号" />
+								<input type="number" name="number" placeholder="请输入您的身份证号" v-model="idcard" />
 							</div>
 						</div>
 						
-						
+						<p class="tip">请填写真实资料，可以更快获得借款</p>
+
 					</div>
-					<div class="option credit">
+					<div class="option credit" style="display:none;">
 						<h2>
                        	    	<img src="../../dist/img/credit_card.png" alt="" />
                        	    	身份证照片
                        	    </h2>
-						<!--<ul class="select">
-							<li class="active">
-								<span>有</span>
-							</li>
-							<li>
-								<span>无</span>
-							</li>
-
-						</ul>-->
 						<div class="identity">
 							<div class="identity_option">
 								<p>身份证正面</p>
@@ -109,47 +94,26 @@
 						<p class="tip">请填写真实资料，可以更快获得借款</p>
 					</div>
 				</div>
-				
+
 				<div class="application">
-					<button>立即申请</button>
+					<button v-on:click="application">立即申请</button>
 				</div>
 
 			</form>
 		</div>
-		<!--footer-->
-		<!--<div class="footer">
-			<ul>
-				<li>
-					<a href="../../index.html">
-						<img src="../../dist/img/recommend.png" alt="" />
-					</a>
-				</li>
-				<li>
-					<a href="javascript:;">
-						<img src="../../dist/img/credit1.png" alt="" />
-					</a>
-				</li>
-				<li>
-					<a href="../service/ser_index.html">
-						<img src="../../dist/img/service.png" alt="" />
-					</a>
-				</li>
-				<li>
-					<a href="../person/per_index.html">
-						<img src="../../dist/img/grouping1.png" alt="" />
-					</a>
-				</li>
-			</ul>
-		</div>-->
-
 	</body>
+
+    <script type="text/javascript" src="../../dist/js/jquery-2.2.4.min.js"></script>
+    <script type="text/javascript" src="../../dist/js/base.js" ></script>
 
 	<script type="text/javascript" src="../../js/common.js"></script>
 	<script type="text/javascript" src="../../js/update.js"></script>
 	<script type="text/javascript" src="../../js/immersed.js"></script>
 	<script type="text/javascript" src="../../js/shortcut.js"></script>
+	
+	<script src="https://cdn.bootcss.com/vue/2.4.4/vue.js"></script>
 
 	<!---->
-	<script type="text/javascript" src="../../dist/js/jquery-2.2.4.min.js"></script>
+	<script type="text/javascript" src="../../dist/js/cre_application.js"></script>
 
 </html>
