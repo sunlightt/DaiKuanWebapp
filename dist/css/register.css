@@ -31,6 +31,7 @@
 
 .login_container .input_group .get_code{
     display:inline-block;
+    width:.9rem;
     font:.14rem/.3rem '微软雅黑';
     color:#fff;
     background:#18b5f9;
@@ -38,8 +39,8 @@
     right:.1rem;
     top:50%;
     transform:translateY(-50%);
-    padding:0 .12rem;
     border-radius:.1rem;
+    text-align:center;
 }
 .login_container .agremment label{
 	display:flex;
@@ -48,25 +49,14 @@
     flex-wrap:wrap;
 }
 .login_container .agremment label input{
-	display:inline-block;
+	display:block;
+	margin:0 auto;
 }
 .login_container .agremment span{
 	display:block;
 	font:.15rem/.54rem '微软雅黑';
 	color:#1f1f1f;
 }
-
-
-
-
-
-
-
-
-
-
-
-
 .sub_wrap {
 	padding-top:.62rem;
 }

@@ -1,35 +1,93 @@
 
+
+html,body{
+   height:100%;
+   width:100%;
+}
+body{
+	background:#EEEEEE;
+}
 .container{
-	padding:0 .1rem;
+	background:#EEEEEE;
+    padding-top:.1rem;
 	
 }
+.container ul{
+	padding:0 .1rem;
+}
 .container ul li{
-	display:flex;
-	flex-direction:row;
-	justify-content:space-between;
-	flex-wrap:wrap;
-	border-bottom:1px solid #333;
+	/*padding:0 .1rem;*/
+	margin-top:.1rem;
+	border-radius:.05rem;
+	background: #fff;
+    border-radius: .08rem;
+    /* box-shadow: 0.06rem 0.06rem 0.05rem #dadadd, -6rem -0.06rem 0.05rem #dadadd; */
+    box-shadow: 4px 4px 8px rgba(0,0,0,0.3), -2px -2px 8px rgba(0,0,0,0.3);
+    overflow: hidden;
 }
 .container ul li .left{
 	flex:5;
 	display:flex;
-	flex-direction:column;
+	flex-direction:row;
 	justify-content:center;
 	flex-wrap:wrap;
 }
-.container ul li .left span , .container ul li .right span{
-	font:.2rem/.3rem '微软雅黑';
+.container ul li .left span:first-child , .container ul li .right span:first-child , .container ul li .middle span:first-child{
+/*	flex:5;*/
+    width:30%;
+	text-align:left;
+	
+}
+.container ul li .left span:first-child+span , .container ul li .right span:first-child+span , .container ul li .middle span:first-child+span{
+	width:70%;
+	text-align:right;
+	
+}
+
+.container ul li .left .count_val{
+	color:#ffaa62;
+}
+
+
+
+.container ul li .left span , .container ul li .middle span , .container ul li .right span{
+    display:block;
+	font:.16rem/.3rem '微软雅黑';
 	color:#333;
 	text-align:left;
+}
+
+
+
+.container ul li .middle{
+	display:flex;
+	flex-direction:row;
+	justify-content:center;
+	flex-wrap:wrap;
 }
 .container ul li .right span{
 	text-align:right;
 }
 .container ul li .right{
 	flex:5;
-	flex:5;
 	display:flex;
-	flex-direction:column;
+	flex-direction:row;
 	justify-content:center;
 	flex-wrap:wrap;
+}
+
+
+.container ul li .right .warning  , .container ul li .right .notice{
+	color:#d84a2a;
+}
+
+.container ul li div{
+	padding:0 .1rem;
+} 
+
+.container ul li .foot{
+   border-top:1px dashed #EEEEEE;
+}
+.container ul li .foot span{
+	font: .18rem/.34rem '微软雅黑';
 }

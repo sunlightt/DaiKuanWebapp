@@ -1,101 +1,148 @@
-
-
-
-
-
 var vm = new Vue({
 	el: '#cre_list',
 	data: {
 		credit_list: [],
+		//总页数
+		all_pages: 0,
+		page_size: 5,
+		page: 1
+
 	},
 	mounted: function() {
 
 		var self = this;
 
 		self.get_creditlist();
+		
+		if(window.localStorage.getItem('title')){
+			
+			$('#title').html(window.localStorage.getItem('title'));
+			
+		}
 	},
 	methods: {
 
 		get_creditlist: function() {
 			var self = this;
-			var url=null;
-			
-			if(window.localStorage.getItem('ser_url')){
-				
-				url=globalData.url+window.localStorage.getItem('ser_url');
-				
-			}else{
-				url=globalData.url + '/index.php/api/Index/type_search';
+			var url = null;
+
+			if(window.localStorage.getItem('ser_url')) {
+
+				url = globalData.url + window.localStorage.getItem('ser_url');
+
+			} else {
+				url = globalData.url + '/index.php/api/Index/type_search';
 			}
-			
+
 			$.ajax({
 				type: "GET",
-				url:url,
+				url: url,
 				data: {
-					id:window.localStorage.getItem('credit_id')
+					id: window.localStorage.getItem('credit_id'),
+					page_size: self.page_size,
+					page: self.page
+
 				},
 				success: function(res) {
 
-                    var res=JSON.parse(res);
-                    if(res.status==200){
-                    	
-						self.credit_list = res.data.pro_lst;
-                    	
-                    } 
+					var res = JSON.parse(res);
+					if(res.status == 200) {
+
+						var data_list = res.data.pro_lst;
+
+						var old_data = self.credit_list;
+
+						if(self.page != 1) {
+							for(var i = 0; i < data_list.length; i++) {
+								old_data.push(data_list[i]);
+							}
+							self.credit_list = old_data;
+
+						} else {
+							self.credit_list = data_list;
+							self.all_pages = res.data.totalpage;
+						}
+
+						//下拉刷新
+						if(window.plus && ws) {
+
+							ws.endPullToRefresh();
+
+						}
+
+					}
 				}
 			});
 
 		},
-		
+
 	}
 })
 
-
-
 //下拉刷新
-var ws=null;
-function plusReady(){
-	ws=plus.webview.currentWebview();
-	ws.setPullToRefresh({support:true,
-		height:'50px',
-		range:'200px',
-		contentdown:{
-			caption:'下拉可以刷新'
-		},
-		contentover:{
-			caption:'释放立即刷新'
-		},
-		contentrefresh:{
-			caption:'正在刷新...'
-		}
-	},onRefresh);
-	
-	document.addEventListener("plusscrollbottom", onScrollToBottom, false);
-	
-//	plus.nativeUI.toast('下拉可以刷新');
+var ws = null;
+
+function plusReady() {
+	ws = plus.webview.currentWebview();
+	if(plus.navigator.isImmersedStatusbar()) { // 兼容沉浸式状态栏模式
+		topoffset = Math.round(plus.navigator.getStatusbarHeight());
+	}
+	ws.setPullToRefresh({
+		support: true,
+		style: 'circle',
+		offset: topoffset + 45 + 'px'
+	}, onRefresh);
 }
 // 判断扩展API是否准备，否则监听'plusready'事件
-if(window.plus){
+if(window.plus) {
 	plusReady();
-}else{
+} else {
 	document.addEventListener('plusready', plusReady, false);
 }
 
-function onRefresh(){
+function onRefresh() {
 
-//  ws.endPullToRefresh();
-    
-//  vm.getdata();
-
-    setTimeout(function(){
-    	
-    	ws.endPullToRefresh();33333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333
-    	
-    },1000);
-    
+	vm.page = 1;
+	vm.get_creditlist();
+	var parent = document.querySelector(".parent");
+	parent.style.marginTop = (Math.round(plus.navigator.getStatusbarHeight()) + 45) + 'px';
 }
 
-// 处理滚动到窗口底部事件   （上啦加载）
-function onScrollToBottom(){
-    plus.nativeUI.toast('数据已加载完，已滑到最底部',{align:'center',duration:'short',verticalAlign:'center'});
-}
+//上拉加载
+$(window).scroll(function() {
+	var scrollTop = $(this).scrollTop();
+	var scrollHeight = $(document).height();
+	var windowHeight = $(this).height();
+	var positionValue = (scrollTop + windowHeight) - scrollHeight;
+
+	if(positionValue >= 0) {
+		var page = vm.page;
+		page++;
+		vm.page = page;
+
+		console.log(page);
+
+		if(page > vm.all_pages) {
+
+			if(window.plus) {
+
+				plus.nativeUI.showWaiting('数据已加载完', {
+					style: 'black',
+					modal: false,
+					color: '#000000',
+					background: 'rgba(0,0,0,0)'
+				});
+
+				setTimeout(function() {
+					plus.nativeUI.closeWaiting();
+				}, 1000);
+
+			}
+			return;
+
+		} else {
+			vm.getdata();
+		}
+
+	}
+});

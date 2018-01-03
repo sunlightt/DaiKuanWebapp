@@ -16,78 +16,72 @@
 	<body>
 		<header id="header">
 			<div id="back" class="nvbt iback" onclick="back()"></div>
-			<div class="nvtt">信用贷款</div>
+			<div class="nvtt">必须金服</div>
 			<!--<div class="nvbt iabout" onclick="clicked('about.html','zoom-fade-out',true)"></div>-->
 		</header>
 		<div class="parent" id="login">
 			<!--登录切换-->
-            <div class="tab_login">
-            	<ul>
-            		<li>
-            			<span class="active">验证码登录</span>
-            		</li>
-            		<li>
-            			<span>密码登录</span>
-            		</li>
-            	</ul>
-            </div>
-            <!--登录容器-->
-            <div class="login_container">
-            	<form action="javascript:;">
-            		
-            		<!--验证码登录-->
-            		<div class="option">
-            			<div class="input_group">
-            				<label for="number">手机号</label>
-            				<input type="number"  placeholder="输入手机号" id="number"  v-model="number" />
-            			</div>
-            			<div class="input_group">
-            				<label for="test">验证码</label>
-            				<input type="number"  placeholder="输入验证码" id="test" v-model="test_code"/>
-            				<span class="get_code" v-on:click="get_testcode">获取验证码</span>
-            			</div>
-            			<div class="sub_wrap">
-            				<button v-on:click="test_login">登录</button>
-            			</div>
-            		</div>
-            		<!--密码登录-->
-            		<div class="option"  style="display:none">
-            			<div class="input_group">
-            				<label for="login_number">手机号</label>
-            				<input type="number"  placeholder="输入手机号" id="login_number" v-model="new_number"/>
-            			</div>
-            			<div class="input_group">
-            				<label for="password">密码</label>
-            				<input type="number"  placeholder="输入密码" id="password" v-model="password"/>
-            				<!--<span class="get_code">获取验证码</span>-->
-            			</div>
-            			<div class="sub_wrap">
-            				<button v-on:click="pwd_login">登录</button>
-            			</div>
-            		</div>
-            		
-            	    <div class="go_register">
-            	    	<p id="register.html" onclick="clicked(this.id)">注册账号</p>
-            	    </div>
-            		
-            	</form>
-            </div>
+			<div class="tab_login">
+				<ul>
+					<li>
+						<span class="active">验证码登录</span>
+					</li>
+					<li>
+						<span>密码登录</span>
+					</li>
+				</ul>
+			</div>
+			<!--登录容器-->
+			<div class="login_container">
+				<form action="javascript:;">
+
+					<!--验证码登录-->
+					<div class="option">
+						<div class="input_group">
+							<label for="number">手机号</label>
+							<input type="number" placeholder="输入手机号" id="number" v-model="number" />
+						</div>
+						<div class="input_group">
+							<label for="test">验证码</label>
+							<input type="number" placeholder="输入验证码" id="test" v-model="test_code" />
+							<span class="get_code" v-on:click="get_testcode">{{code_tip}}</span>
+						</div>
+						<div class="sub_wrap">
+							<button v-on:click="test_login">登录</button>
+						</div>
+					</div>
+					<!--密码登录-->
+					<div class="option" style="display:none">
+						<div class="input_group">
+							<label for="login_number">手机号</label>
+							<input type="number" placeholder="输入手机号" id="login_number" v-model="new_number" />
+						</div>
+						<div class="input_group">
+							<label for="password">密码</label>
+							<input type="password" placeholder="输入密码" id="password" v-model="password" />
+							<!--<span class="get_code">获取验证码</span>-->
+						</div>
+						<div class="sub_wrap">
+							<button v-on:click="pwd_login">登录</button>
+						</div>
+					</div>
+				</form>
+				<div class="go_register" style="display:block;">
+					<p id="register.html" onclick="clicked(this.id)">注册账号</p>
+				</div>
+			</div>
 		</div>
 	</body>
 
-    <script type="text/javascript" src="../../dist/js/jquery-2.2.4.min.js"></script>
-    <script type="text/javascript" src="../../dist/js/base.js" ></script>
+	<script type="text/javascript" src="../../dist/js/jquery-2.2.4.min.js"></script>
+	<script type="text/javascript" src="../../dist/js/base.js"></script>
 
 	<script type="text/javascript" src="../../js/common.js"></script>
-	<script type="text/javascript" src="../../js/update.js"></script>
 	<script type="text/javascript" src="../../js/immersed.js"></script>
 	<script type="text/javascript" src="../../js/shortcut.js"></script>
-	
-	<!---->
-	
+
 	<script src="https://cdn.bootcss.com/vue/2.4.4/vue.js"></script>
 
 	<script type="text/javascript" src="../../dist/js/login.js"></script>
-
 
 </html>

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>首页</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+		<meta name="misapplication-tap-highlight" content="no" />
+		<meta name="HandheldFriendly" content="true" />
+		<meta name="MobileOptimized" content="320" />
+		<!--h5+-->
+		<link rel="stylesheet" href="css/common.css" />
+
+		<link rel="stylesheet" href="./dist/mui/css/mui.min.css">
+
+		<link rel="stylesheet" href="dist/css/index.css" />
+	</head>
+
+	<body>
+		<div>
+			<div class="parent" id="parent">
+				<div class="container_wrap">
+					<!--底部tab切换对应的每一项      推荐-->
+					<div class="option_tab">
+						<div id="slider" class="mui-slider">
+							<div class="mui-slider-group mui-slider-loop">
+								<div class="mui-slider-item mui-slider-item-duplicate">
+									<a href="#">
+										<!--dist/img/banner.png-->
+										<img src="" class="fisrt_banner">
+									</a>
+								</div>
+								<div class="mui-slider-item" v-for="(item , index) in banner">
+									<a href="#">
+										<img v-bind:src="item.carousel_img" onclick="clicked_canshu(this,'./pages/credit/cre_dateils.html')" v-bind:type="item.type" v-bind:url_path="item.link_url" v-bind:credit_id="item.data_id">
+									</a>
+								</div>
+								<div class="mui-slider-item mui-slider-item-duplicate">
+									<a href="#">
+										<img src="" class="end_banner">
+									</a>
+								</div>
+							</div>
+							<div class="mui-slider-indicator">
+								<div class="mui-indicator " v-bind:class="{'mui-active':index==0}" v-for="(item , index) in banner"></div>
+							</div>
+						</div>
+						<!--<button v-on:click="clear">清除数据</button>
+-->
+						<!--credit_nav_wrap-->
+						<div class="credit_nav_wrap" v-if="count_type">
+							<!--借款导航-->
+							<ul class="credit_nav">
+								<li class="blue" onclick="clicked_canshu(this,'pages/credit/cre_list.html')" v-bind:title="item.type_name"  v-bind:credit_id="item.id" v-for="(item , index) in credit_type" v-bind:class="{'blue':index==0, 'yellow': index==1,'pink': index==2,'deepblue': index==3}">
+									<span class="color">{{item.type_name}}</span>
+									<span>{{item.type_des}}</span>
+								</li>
+							</ul>
+						</div>
+						<!--content-->
+						<div class="content head_top" v-if="count_type">
+							<!--广播-->
+							<div class="broadcast">
+								<img src="dist/img/broadcast.png" alt="" class="broadcast_img" />
+								<div class="list_wrap">
+									<ul class="list">
+										<li>
+											<div class="msg"><i>王**</i>在<span>信用贷-信用钱</span>包成功借款 <span>1000</span> 元 </div>
+											<strong class="time">5分钟前</strong>
+										</li>
+										<li>
+											<div class="msg"><i>王**</i>在<span>信用贷-信用钱</span>包成功借款 <span>1000</span> 元 </div>
+											<strong class="time">5分钟前</strong>
+										</li>
+										<li>
+											<div class="msg"><i>王**</i>在<span>信用贷-信用钱</span>包成功借款 <span>1000</span> 元 </div>
+											<strong class="time">5分钟前</strong>
+										</li>
+										<li>
+											<div class="msg"><i>王**</i>在<span>信用贷-信用钱</span>包成功借款 <span>1000</span> 元 </div>
+											<strong class="time">5分钟前</strong>
+										</li>
+										<li>
+											<div class="msg"><i>王**</i>在<span>信用贷-信用钱</span>包成功借款 <span>1000</span> 元 </div>
+											<strong class="time">5分钟前</strong>
+										</li>
+										<li>
+											<div class="msg"><i>王**</i>在<span>信用贷-信用钱</span>包成功借款 <span>1000</span> 元 </div>
+											<strong class="time">5分钟前</strong>
+										</li>
+										<li>
+											<div class="msg"><i>王**</i>在<span>信用贷-信用钱</span>包成功借款 <span>1000</span> 元 </div>
+											<strong class="time">5分钟前</strong>
+										</li>
+										<li>
+											<div class="msg"><i>王**</i>在<span>信用贷-信用钱</span>包成功借款 <span>1000</span> 元 </div>
+											<strong class="time">5分钟前</strong>
+										</li>
+										<li>
+											<div class="msg"><i>王**</i>在<span>信用贷-信用钱</span>包成功借款 <span>1000</span> 元 </div>
+											<strong class="time">5分钟前</strong>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<!--tab-->
+							<div class="tab credit_list_tab" v-if="count_type">
+								<ul class="list">
+									<li v-for="(item,index) in change_tab" v-bind:class="{'active':index==0}" v-bind:type_id="item.id" v-on:click="changeType">
+										<span>{{item.team_name}}</span>
+									</li>
+								</ul>
+							</div>
+						</div>
+
+						<!--list-->
+						<div class="content">
+							<ul class="credit_list">
+								<li onclick="clicked_canshu(this,'pages/credit/cre_dateils.html')" v-bind:title="item.pro_name" v-bind:credit_id="item.id" v-for="(item , index) in credit_list">
+									<div class="line"></div>
+									<div class="top">
+										<div class="stages">
+											<div class="left">
+												<img v-bind:src="item.pro_img" alt="" class="img_icon" />
+												<span>{{item.pro_name}}</span>
+											</div>
+											<div class="right" v-if="count_type">
+												<span>{{item.apply_num}}人已申请</span>
+												<img src="dist/img/hot.png" alt="" />
+											</div>
+											<div class="right account" v-else>
+												<span>手动记账</span>
+											</div>
+										</div>
+										<div class="rate">
+											<span class="left" v-if="item.is_rate==1">日利率  <i>{{item.rate}}%</i></span>
+											<span class="left" v-else>月利率  <i>{{item.rate}}%</i></span>
+											<span class="center" v-if="count_type">额度  <i>{{item.min_money}}-{{item.max_money}}元</i> </span>
+											<span class="center" v-else>范围  <i>{{item.min_money}}-{{item.max_money}}元</i> </span>
+											<span class="right" v-if="count_type">成功率  <i>{{item.success_rate}}%</i></span>
+										</div>
+									</div>
+									<div class="bottom">
+										<span class="" v-for="(msg , i) in item.pro_des" v-bind:class="{'mortgage':i==0,'grant':i==1}">{{msg}}</span>
+										<!--<span class="grant">30分钟快速放款!</span>-->
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<!--弹出框-->
+
+	<script src="dist/js/jquery-2.2.4.min.js"></script>
+	<script src="dist/js/base.js"></script>
+
+	<script type="text/javascript" src="js/common.js"></script>
+	<!--<script type="text/javascript" src="js/update.js"></script>-->
+	<!--<script type="text/javascript" src="js/immersed.js"></script>-->
+	<script type="text/javascript" src="js/shortcut.js"></script>
+
+	<script type="text/javascript" src="js/mui.min.js"></script>
+
+	<!--轮番图插件-->
+
+	<script type="text/javascript" src="dist/js/vue_mian.js"></script>
+	<script type="text/javascript" src="dist/js/index1.js"></script>
+	<script type="text/javascript" src="dist/js/index.js"></script>
+
+	<script>
+		
+		mui.init({
+			swipeBack: true //启用右滑关闭功能
+		});
+		var slider = mui("#slider");
+		slider.slider({
+			interval: 3000
+		});
+	</script>
+
+</html>

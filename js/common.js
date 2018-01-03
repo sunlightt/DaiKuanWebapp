@@ -1,7 +1,7 @@
 ﻿(function(w) {
 	// 空函数
 	function shield() {
-		//		return false;
+		return false;
 	}
 	document.addEventListener('touchstart', shield, false); //取消浏览器的所有事件，使得active的样式在手机上正常生效
 	document.oncontextmenu = shield; //屏蔽选择函数
@@ -10,12 +10,13 @@
 		as = 'pop-in';
 
 	function plusReady() {
+
 		plus.webview.currentWebview().setStyle({
-			softinputMode: "adjustResize" // 弹出软键盘时自动改变webview的高度
+			softinputMode: "adjustResize"
 		});
 
 		plus.navigator.setLogs(true);
-		
+
 		ws = plus.webview.currentWebview();
 		//		ws.setBounce({position:{top:'100px'},changeoffset:{top:'44px'}});
 
@@ -27,7 +28,6 @@
 	}
 	if(w.plus) {
 		plusReady();
-		console.log(w.plus);
 	} else {
 		document.addEventListener('plusready', plusReady, false);
 	}
@@ -41,16 +41,20 @@
 	}, false);
 	// 处理返回事件
 	w.back = function(hide) {
+		
 		if(w.plus) {
 			ws || (ws = plus.webview.currentWebview());
 			if(hide || ws.preate) {
 				ws.hide('auto');
-			} else {
+			} else if(plus.webview.currentWebview().getURL().indexOf('main.html')!=-1){
+				plus.runtime.quit();
+			}else {
 				ws.close('auto');
 			}
+
 		} else if(history.length > 1) {
 			history.back();
-		} else {
+		}else {
 			w.close();
 		}
 	};
@@ -76,10 +80,8 @@
 			var pre = ''; //'http://192.168.1.178:8080/h5/';
 			openw = plus.webview.create(pre + id, id, ws);
 			ns || openw.addEventListener('loaded', function() { //页面加载完成后才显示
-				//		setTimeout(function(){//延后显示可避免低端机上动画时白屏
 				openw.show(as);
 				closeWaiting();
-				//		},200);
 			}, false);
 			openw.addEventListener('close', function() { //页面关闭后可再次打开
 				openw = null;
@@ -96,9 +98,25 @@
 		if(openw) { //避免多次打开同一个页面
 			return null;
 		}
+		
+		console.log($(obj).attr('title'));
+		
+		if($(obj).attr('title')){
+			
+			window.localStorage.setItem('title', $(obj).attr('title'));
+			
+		}else{
+			
+			window.localStorage.removeItem('title');
+		}
+
+		if($(obj).attr('type') && $(obj).attr('type') == 2) {
+
+			id = './pages/blank_page/webview_embed.html';
+
+		}
 
 		//外部链接
-
 		if($(obj).attr('url_path')) {
 
 			window.localStorage.setItem('url_path', $(obj).attr('url_path'));
@@ -136,10 +154,10 @@
 			var pre = ''; //'http://192.168.1.178:8080/h5/';
 			openw = plus.webview.create(pre + id, id, ws);
 			ns || openw.addEventListener('loaded', function() { //页面加载完成后才显示
-				//		setTimeout(function(){//延后显示可避免低端机上动画时白屏
+				
 				openw.show(as);
 				closeWaiting();
-				//		},200);
+				
 			}, false);
 			openw.addEventListener('close', function() { //页面关闭后可再次打开
 				openw = null;
@@ -155,9 +173,8 @@
 		if(openw) { //避免多次打开同一个页面
 			return null;
 		}
-
 		//更改页面跳转路径
-		//		var page_path ='cre_application.html';
+		//var page_path ='cre_application.html';
 		var page_path = null;
 
 		//注册用户信息
@@ -185,13 +202,10 @@
 					success: function(res) {
 						//  res.status 207 认证   208未认证
 						var res = JSON.parse(res);
-						console.log(res);
 						if(res.status == 207) {
-							console.log(res);
+							
 							window.localStorage.setItem('authen_status', 2);
 							authen_status = 2;
-
-							//认证过  进行贷款申请
 							$.ajax({
 								type: "GET",
 								url: globalData.url + '/index.php/api/Index/apply_dai',
@@ -205,15 +219,54 @@
 									money_per: window.localStorage.getItem('money_per'),
 									zong_lixi: window.localStorage.getItem('zong_lixi')
 								},
-								//								async: false,
 								success: function(response) {
 									var response = JSON.parse(response);
 									if(response.status == 200) {
 
-										alert('申请成功');
+                                        //测试账号弹出遮罩层
+                                        if(window.localStorage.getItem('count_type')){
+                                        	
+                                        	
+                                        	
+                                        	if(window.plus){
+                                        		
+                                        		//获取credit_dateils.html 的窗口对象
+                                        		var wd=plus.webview.getWebviewById('pages/credit/cre_dateils.html');
+                                        		
+                                        		wd.setStyle({mask:'rgba(0,0,0,0.5)'});
+                                        		
+                                        		plus.nativeUI.alert("记账成功", function() {
+													
+													back();
+													
+												}, "提示", "确定");
+											}
+                                        	return;
+                                        }
+                                        
+                                        //申请成功
+										window.localStorage.setItem('application_status', true);
+                                         
+										if(window.localStorage.getItem('pro_url')) {
+											
+											page_path = window.localStorage.getItem('pro_url');
+											
+											window.localStorage.setItem('url_path',page_path);
+											
+											clicked_canshu(obj,'../blank_page/webview_embed.html');
+										}
+
 										return;
 									} else {
-										alert('申请失败');
+										//alert('申请失败');
+										if(window.plus) {
+
+											if(window.plus) {
+												plus.nativeUI.alert("申请失败", function() {
+													back();
+												}, "提示", "确定");
+											}
+										}
 										return;
 									}
 								}
@@ -229,34 +282,98 @@
 
 							page_path = 'cre_application.html';
 
-							console.log(208);
+							if(w.plus) {
+								wa && (waiting = plus.nativeUI.showWaiting());
+								ws = ws || {};
+								ws.scrollIndicator || (ws.scrollIndicator = 'none');
+								ws.scalable || (ws.scalable = false);
+								var pre = ''; //'http://192.168.1.178:8080/h5/';
+								openw = plus.webview.create(pre + page_path, page_path, ws);
+								ns || openw.addEventListener('loaded', function() { //页面加载完成后才显示
+									//		setTimeout(function(){//延后显示可避免低端机上动画时白屏
+									openw.show(as);
+									closeWaiting();
+									//		},200);
+								}, false);
+								openw.addEventListener('close', function() { //页面关闭后可再次打开
+									openw = null;
+								}, false);
+								return openw;
+							} else {
+								console.log('208zhuang');
+								w.open(page_path);
+							}
 
 						}
 					}
 				});
 
-				//				return;
+				//return;
 
 			} else {
-
 				page_path = id;
+
+				if(w.plus) {
+					wa && (waiting = plus.nativeUI.showWaiting());
+					ws = ws || {};
+					ws.scrollIndicator || (ws.scrollIndicator = 'none');
+					ws.scalable || (ws.scalable = false);
+					var pre = ''; //'http://192.168.1.178:8080/h5/';
+					openw = plus.webview.create(pre + page_path, page_path, ws);
+					ns || openw.addEventListener('loaded', function() { //页面加载完成后才显示
+						//		setTimeout(function(){//延后显示可避免低端机上动画时白屏
+						openw.show(as);
+						closeWaiting();
+						//		},200);
+					}, false);
+					openw.addEventListener('close', function() { //页面关闭后可再次打开
+						openw = null;
+					}, false);
+					return openw;
+				} else {
+					w.open(page_path);
+				}
 			}
 
 		} else {
 			page_path = '../login/login.html';
+
+			if(w.plus) {
+				wa && (waiting = plus.nativeUI.showWaiting());
+				ws = ws || {};
+				ws.scrollIndicator || (ws.scrollIndicator = 'none');
+				ws.scalable || (ws.scalable = false);
+				var pre = ''; //'http://192.168.1.178:8080/h5/';
+				openw = plus.webview.create(pre + page_path, page_path, ws);
+				ns || openw.addEventListener('loaded', function() { //页面加载完成后才显示
+					//		setTimeout(function(){//延后显示可避免低端机上动画时白屏
+					openw.show(as);
+					closeWaiting();
+					//		},200);
+				}, false);
+				openw.addEventListener('close', function() { //页面关闭后可再次打开
+					openw = null;
+				}, false);
+				return openw;
+			} else {
+				w.open(page_path);
+			}
 		}
 
-		console.log(page_path);
+		return null;
+	}
 
-		//		return;
-
+	w.open_webview = function(id, wa, ns, ws) {
+		if(openw) { //避免多次打开同一个页面
+			return null;
+		}
 		if(w.plus) {
 			wa && (waiting = plus.nativeUI.showWaiting());
 			ws = ws || {};
 			ws.scrollIndicator || (ws.scrollIndicator = 'none');
 			ws.scalable || (ws.scalable = false);
 			var pre = ''; //'http://192.168.1.178:8080/h5/';
-			openw = plus.webview.create(pre + page_path, page_path, ws);
+			openw = plus.webview.create(pre + id, id, ws);
 			ns || openw.addEventListener('loaded', function() { //页面加载完成后才显示
 				//		setTimeout(function(){//延后显示可避免低端机上动画时白屏
 				openw.show(as);
@@ -268,10 +385,10 @@
 			}, false);
 			return openw;
 		} else {
-			w.open(page_path);
+			w.open(id);
 		}
 		return null;
-	}
+	};
 
 	w.openDoc = function(t, c) {
 		var d = plus.webview.getWebviewById('document');

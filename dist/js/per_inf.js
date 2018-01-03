@@ -138,11 +138,21 @@ var vm=new Vue({
 				success: function(res) {
                     var res=JSON.parse(res);
                     if(res.status==200){
-                    	alert('修改成功');
+                    	plus.nativeUI.confirm("修改成功", function(event) {
+							var index = event.index;
+							if(index == 0) {
+								
+								back();
+							}
+						}, ["确定", "取消"]);
                     	//修改成功后返回
-                    	back();
+                    	
                     }else{
-                    	alert("修改失败");
+                    	plus.nativeUI.confirm("修改失败", function(event) {
+							var index = event.index;
+							if(index == 0) {
+							}
+						}, ["确定", "取消"]);
                     }
 				}
 			});

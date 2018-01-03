@@ -11,105 +11,176 @@
 		<meta name="MobileOptimized" content="320" />
 		<link rel="stylesheet" href="../../css/common.css" />
 		<link rel="stylesheet" href="../../dist/css/per_indx.css" />
+		<link rel="stylesheet" href="../../dist/css/login.css" />
+		<link rel="stylesheet" href="../../dist/css/application_list.css" />
 	</head>
 
 	<body>
-		<header id="header">
-			<div id="back" style="visibility:hidden" class="nvbt iback" onclick="plus.runtime.quit()"></div>
-			<div class="nvtt">信用贷款</div>
-			<!--<div class="nvbt iabout" onclick="clicked('about.html','zoom-fade-out',true)"></div>-->
-		</header>
-		<div class="parent">
-			<div class="per_img">
-				<div class="msg">
-					<img src="../../dist/img/activity.png" alt="" class="img_icon" />
-					<span id="per_inf.html" onclick="clicked(this.id)">够范分期</span>
+		<div class="parent" id="person_data">
+			<div class="per_box" style="display:none;">
+				<div class="per_img">
+					<div class="msg">
+						<span class="avatar">
+						<img v-bind:src="avatar" alt="" class="img_icon" />
+						<form id="uploadForm" enctype="multipart/form-data">
+					        <input type="hidden" name='uid' v-model='user_id' style="font:.2rem/.3rem '微软雅黑';color:#333;text-align:center;"/>
+							<input class="img-btn upimg" type="file" id="drivingLicence" name="file" onchange="up_img()">
+						</form>
+					</span>
+						<span id="per_inf.html" onclick="clicked(this.id)">{{user_name}}</span>
+						<div class="singout" v-if="!count_type">
+							<span v-on:click="singout">退出登录</span>
+						</div>
+					</div>
+					<!--<div class="singout" v-if="!count_type">
+						<span v-on:click="singout">退出登录</span>
+					</div>-->
+				</div>
+
+				<!--正常账号显示-->
+				<!--option-->
+				<div class="option" v-if="count_type">
+					<ul>
+						<li>
+							<div class="item" onclick="clicked('./application_list.html')">
+								<img src="../../dist/img/credit_query.png" alt="" />
+								<span>历史记录</span>
+							</div>
+						</li>
+						<li>
+							<div class="item" onclick="clicked_canshu(this,'../blank_page/webview_embed.html')" v-bind:url_path="url_arr.zx">
+								<img src="../../dist/img/credit_query.png" alt="" />
+								<span>我的征信报告</span>
+							</div>
+						</li>
+						<li>
+							<div class="item" onclick="clicked_canshu(this,'../blank_page/webview_embed.html')" v-bind:url_path="url_arr.xyk">
+								<img src="../../dist/img/credit_query.png" alt="" />
+								<span>办理信用卡</span>
+							</div>
+						</li>
+						<li>
+							<div class="item" onclick="clicked_canshu(this,'../blank_page/webview_embed.html')" v-bind:url_path="url_arr.gl">
+								<img src="../../dist/img/credit_query.png" alt="" />
+								<span>攻略指南</span>
+							</div>
+						</li>
+						<li>
+							<div class="item" onclick="clicked_canshu(this,'../blank_page/webview_embed.html')" v-bind:url_path="url_arr.hd">
+								<img src="../../dist/img/credit_query.png" alt="" />
+								<span>我的活动</span>
+							</div>
+						</li>
+						<li>
+							<div class="item" onclick="clicked_canshu(this,'../blank_page/webview_embed.html')" v-bind:url_path="url_arr.gd">
+								<img src="../../dist/img/credit_query.png" alt="" />
+								<span>更多</span>
+							</div>
+						</li>
+					</ul>
+					<div class="signout" v-on:click="singout">
+						<span>退出登录</span>
+					</div>
+				</div>
+
+				<!--测试账号记账记录-->
+				<div class="container">
+					<ul>
+						<li v-for="(item , index) in data_list">
+							<div class="left">
+								<span v-if="count_type">贷款金额</span>
+								<span v-else>记账金额</span>
+								<span class="count_val">{{item.dai_money}}元</span>
+							</div>
+							<div class="middle">
+								<span v-if="count_type">贷款期限</span>
+								<span v-else>记账期限</span>
+								<span v-if="item.is_sel_day==1">{{item.dai_time}}日</span>
+								<span v-else>{{item.dai_time}}月</span>
+							</div>
+							<div class="right">
+								<span>时间</span>
+								<span>{{formatDateTime({ "inputTime": item.ctime* 1000, "type": "all" })}}</span>
+							</div>
+							<div class="right foot">
+								<span v-if="count_type">还款期限</span>
+								<span v-else>剩余期限</span>
+								<span v-if="item.is_sel_day==1" v-bind:class="{'warning':item.term<=7}">{{item.term>=0 ? '剩余'+item.term+'日' : '逾期'+(-item.term)+'日'}}</span>
+								<span v-else v-bind:class="{'warning':item.term<=30}">{{item.term>=0 ? '剩余'+item.term+'日' : '逾期'+(-item.term)+'日'}}</span>
+							</div>
+						</li>
+					</ul>
+				</div>
+
+			</div>
+
+			<!--登录框-->
+			<div class="login_box" style="display:none;">
+				<!--登录切换-->
+				<div class="tab_login">
+					<ul>
+						<li>
+							<span class="active">验证码登录</span>
+						</li>
+						<li>
+							<span>密码登录</span>
+						</li>
+					</ul>
+				</div>
+				<!--登录容器-->
+				<div class="login_container">
+					<form action="javascript:;">
+
+						<!--验证码登录-->
+						<div class="option">
+							<div class="input_group">
+								<label for="number">手机号</label>
+								<input type="number" placeholder="输入手机号" id="number" v-model="number" />
+							</div>
+							<div class="input_group">
+								<label for="test">验证码</label>
+								<input type="number" placeholder="输入验证码" id="test" v-model="test_code" />
+								<span class="get_code" v-on:click="get_testcode">{{code_tip}}</span>
+							</div>
+							<div class="sub_wrap">
+								<button v-on:click="test_login">登录</button>
+							</div>
+						</div>
+						<!--密码登录-->
+						<div class="option" style="display:none">
+							<div class="input_group">
+								<label for="login_number">手机号</label>
+								<input type="number" placeholder="输入手机号" id="login_number" v-model="new_number" />
+							</div>
+							<div class="input_group">
+								<label for="password">密码</label>
+								<input type="number" placeholder="输入密码" id="password" v-model="password" />
+								<!--<span class="get_code">获取验证码</span>-->
+							</div>
+							<div class="sub_wrap">
+								<button v-on:click="pwd_login">登录</button>
+							</div>
+						</div>
+					</form>
+					<div class="go_register">
+						<p id="../login/register.html" onclick="clicked(this.id)">注册账号</p>
+					</div>
 				</div>
 			</div>
-			<!--option-->
-			<div class="option">
-				<ul>
-					<li>
-						<div class="item">
-							<img src="../../dist/img/credit_query.png" alt="" />
-							<span>贷款进度查询</span>
-						</div>
-					</li>
-					<li>
-						<div class="item" id="per_inf.html" onclick="clicked(this.id)">
-							<img src="../../dist/img/credit_query.png" alt="" />
-							<span>我的征信报告</span>
-						</div>
-					</li>
-					<li>
-						<div class="item">
-							<img src="../../dist/img/credit_query.png" alt="" />
-							<span>办理信用卡</span>
-						</div>
-					</li>
-					<li>
-						<div class="item">
-							<img src="../../dist/img/credit_query.png" alt="" />
-							<span>攻略指南</span>
-						</div>
-					</li>
-					<li>
-						<div class="item">
-							<img src="../../dist/img/credit_query.png" alt="" />
-							<span>我的活动</span>
-						</div>
-					</li>
-					<li>
-						<div class="item">
-							<img src="../../dist/img/credit_query.png" alt="" />
-							<span>更多</span>
-						</div>
-					</li>
-					
-				</ul>
-			</div>
 
 		</div>
-
-		<!--footer-->
-		<div class="footer">
-			<ul>
-				<li>
-					<a href="../../index.html">
-						<img src="../../dist/img/recommend.png" alt="" />
-					</a>
-				</li>
-				<li>
-					<a href="../credit/cre_index.html">
-						<img src="../../dist/img/credit.png" alt="" />
-					</a>
-				</li>
-				<li>
-					<a href="../service/ser_index.html">
-						<img src="../../dist/img/service.png" alt="" />
-					</a>
-				</li>
-				<li>
-					<a href="javascript:;">
-						<img src="../../dist/img/grouping.png" alt="" />
-					</a>
-				</li>
-			</ul>
-		</div>
-
 	</body>
 
-    <script type="text/javascript" src="../../dist/js/jquery-2.2.4.min.js"></script>
-    <script type="text/javascript" src="../../dist/js/base.js" ></script>
-    <script src="https://cdn.bootcss.com/vue/2.4.4/vue.js"></script>
+	<script type="text/javascript" src="../../dist/js/jquery-2.2.4.min.js"></script>
+	<script type="text/javascript" src="../../dist/js/base.js"></script>
 
+	<script type="text/javascript" src="../../js/mui.min.js"></script>
 
 	<script type="text/javascript" src="../../js/common.js"></script>
-	<script type="text/javascript" src="../../js/update.js"></script>
-	<script type="text/javascript" src="../../js/immersed.js"></script>
 	<script type="text/javascript" src="../../js/shortcut.js"></script>
-	
-	<!--<script type="text/javascript" src="../../dist/js/cre_dateils.js"></script>-->
-	
-	
+
+	<script type="text/javascript" src="../../dist/js/vue_mian.js"></script>
+
+	<script type="text/javascript" src="../../dist/js/per_index.js"></script>
+
 </html>

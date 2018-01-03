@@ -12,35 +12,42 @@
 		<link rel="stylesheet" href="../../css/common.css" />
 		<link rel="stylesheet" href="../../dist/css/cre_dateils.css" />
 	</head>
-
+    
 	<body>
 		<header id="header">
 			<div id="back" class="nvbt iback" onclick="back()"></div>
-			<div class="nvtt">信用贷款</div>
+			<div class="nvtt" id="title">必须金服</div>
 			<!--<div class="nvbt iabout" onclick="clicked('about.html','zoom-fade-out',true)"></div>-->
 		</header>
 		<div>
 			<div class="parent">
-
 				<form action="javascript:;">
-
 					<div class="content" id="calculation">
 						<!--成功率-->
 						<div class="success_rate">
-							<div class="wrap">
+							<div class="wrap" v-if="count_type">
 								<img v-bind:src="img_src" alt="" />
 								<h2>成功率 : <span>{{success_rate}}%</span></h2>
 								<h2>申请人数 : <span>{{apply_num}}</span></h2>
 								<p>{{review_msg}}</p>
 							</div>
+							<div class="wrap" v-else>
+								<img v-bind:src="img_src" alt="" />
+								<h2 style="height:.6rem;line-height:.6rem;">名称: <span>{{pro_name}}</span></h2>
+							</div>
 						</div>
 						<!--贷款范围-->
 						<div class="credit_range_wrap">
 							<div class="credit_range">
-								<div class="top">
+								<div class="top" v-if="count_type">
 									<span class="range">贷款范围: {{min_money}}元-{{max_money}}元</span>
 									<span class="date" v-if="is_rate==1">贷款期限: {{min_day}}日-{{max_day}}日</span>
 									<span class="date" v-else>贷款期限: {{min_day}}月-{{min_day}}月</span>
+								</div>
+								<div class="top" v-else>
+									<span class="range">范围: {{min_money}}元-{{max_money}}元</span>
+									<span class="date" v-if="is_rate==1">期限: {{min_day}}日-{{max_day}}日</span>
+									<span class="date" v-else>期限: {{min_day}}月-{{min_day}}月</span>
 								</div>
 								<div class="middle">
 									<div class="left">
@@ -72,7 +79,7 @@
 										</li>
 										<li class="month_rate">
 											<!--<strong><i>0.95</i>%</strong>
-										<span>月利率</span>-->
+										    <span>月利率</span>-->
 											<strong><i>{{month_rate}}</i>%</strong>
 											<span v-if="is_rate==1">日利率</span>
 											<span v-else>月利率</span>
@@ -83,7 +90,7 @@
 						</div>
 						<!--流程-->
 						<p id="text"></p>
-						<div class="process">
+						<div class="process" v-if="count_type">
 							<div class="option">
 								<h2>审核说明</h2>
 								<div class="msg">
@@ -115,17 +122,13 @@
 							</div>
 						</div>
 						<div class="application">
-							<button onclick="application(this,'cre_application.html')">立即申请</button>
+							<button onclick="application(this,'cre_application.html')" v-if="count_type">立即申请</button>
+						    <button onclick="application(this,'cre_application.html')" v-else>立即记账</button>
 						</div>
-
 					</div>
-
 				</form>
-
 			</div>
-
 		</div>
-
 	</body>
 
 	<script type="text/javascript" src="../../dist/js/jquery-2.2.4.min.js"></script>

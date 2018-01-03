@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>首页</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="./dist/mui/css/mui.min.css">
+		<link rel="stylesheet" href="./css/common.css" />
+		<style>
+			html,
+			body {
+				background-color: #efeff4;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header id="header">
+			<div id="back" class="nvbt iback" style="visibility:hidden;"></div>
+			<div class="nvtt" id="title"></div>
+		</header>
+		<nav class="mui-bar mui-bar-tab" id="tab_bar">
+			<a id="defaultTab" class="mui-tab-item mui-active" href="main.html" data-index="0">
+				<span class="mui-icon">
+				    <img src="./dist/img/recommend1.png" alt="" />
+				</span>
+				<span class="mui-tab-label">{{tabBar_inf[0]}}</span>
+			</a>
+			<a class="mui-tab-item" href="./pages/credit/cre_index.html" data-index="1">
+				<span class="mui-icon">
+					<img src="./dist/img/recommend1.png" alt="" />
+				</span>
+				<span class="mui-tab-label">{{tabBar_inf[1]}}</span>
+			</a>
+			<a class="mui-tab-item service" href="https://www.baidu.com/" data-index="2">
+				<span class="mui-icon">
+					<img src="./dist/img/recommend1.png" alt="" />
+				</span>
+				<span class="mui-tab-label">{{tabBar_inf[2]}}</span>
+			</a>
+			<a class="mui-tab-item person" href="./pages/person/per_index.html" data-index="3">
+				<span class="mui-icon">
+					<img src="./dist/img/recommend1.png" alt="" />
+				</span>
+				<span class="mui-tab-label">{{tabBar_inf[3]}}</span>
+			</a>
+		</nav>
+	</body>
+	<script src="./js/mui.min.js"></script>
+	<script src="./js/common.js"></script>
+	<script src="dist/js/jquery-2.2.4.min.js"></script>
+	<script src="dist/js/vue_mian.js"></script>
+	<script src="dist/js/base.js"></script>
+	<script src="./js/immersed.js"></script>
+	<script type="text/javascript">
+		
+		var tab_bar=new Vue({
+			
+			el:'#tab_bar',
+			data:{
+				
+				tabBar_inf:[]
+				
+			},
+			mounted:function(){
+				
+				var self=this;
+				
+				if(window.localStorage.getItem('count_type')){
+					
+					self.tabBar_inf=['记账','计算','服务','我的'];
+					
+				}else{
+					
+					self.tabBar_inf=['推荐','贷款','赚钱','我的'];
+				}
+				
+				$('#title').html(self.tabBar_inf[0]);
+			}
+		});
+		
+		//自定义事件 正常登录
+		window.addEventListener('newsId',function(event){
+		   
+		    tab_bar.tabBar_inf=['推荐','贷款','赚钱','我的'];
+			
+		});
+		
+		//mui初始化
+		//D74B28
+		mui.init({
+			statusBarBackground: "#D74B28"
+		});
+		var subpages = ['main.html', './pages/credit/cre_index.html', 'https://www.baidu.com/', './pages/person/per_index.html'];
+
+        var icon_arr=[
+        
+            {
+             	'def':'./dist/img/recommend.png',
+             	'act':'./dist/img/recommend1.png'
+            },
+            {
+             	'def':'./dist/img/credit.png',
+             	'act':'./dist/img/credit1.png'
+            },
+            {
+             	'def':'./dist/img/service.png',
+             	'act':'./dist/img/service1.png'
+            },
+            {
+             	'def':'./dist/img/grouping.png',
+             	'act':'./dist/img/grouping1.png'
+            }
+        ];
+        
+        
+        //设置样式
+        $('#tab_bar').find('img').each(function(i,item){
+        	
+        	$(this).attr('src',icon_arr[i].def);
+        	
+        });
+        $('#tab_bar').find('img').eq(0).attr('src',icon_arr[0].act);
+        
+
+		var top_offset = (24 + 45);
+		var subpage_style = null;
+		subpage_style = {
+			//top: '100px',
+			top: top_offset + 'px',
+			bottom: '51px'
+		};
+		var aniShow = {};
+		//创建子页面，首个选项卡页面显示，其它均隐藏；
+		mui.plusReady(function() {
+
+			var self = plus.webview.currentWebview();
+			$.ajax({
+				type: "GET",
+				url: globalData.url + '/index.php/api/Users/services',
+				success: function(res) {
+					var res = JSON.parse(res);
+					if(res.status == 200) {
+
+						var path_data = res.data;
+
+						window.localStorage.setItem('path_data', JSON.stringify(res.data))
+
+						$('.service').attr('href', res.data.fw);
+						subpages[2] = res.data.fw;
+
+						for(var i = 0; i < 4; i++) {
+							var temp = {};
+							var sub = plus.webview.create(subpages[i], subpages[i], subpage_style);
+							if(i > 0) {
+								sub.hide();
+							} else {
+								temp[subpages[i]] = "true";
+								mui.extend(aniShow, temp);
+							}
+							self.append(sub);
+						}
+						
+					} else {
+						for(var i = 0; i < 4; i++) {
+							var temp = {};
+							var sub = plus.webview.create(subpages[i], subpages[i], subpage_style);
+							if(i > 0) {
+								sub.hide();
+							} else {
+								temp[subpages[i]] = "true";
+								mui.extend(aniShow, temp);
+							}
+							self.append(sub);
+						}
+					}
+				}
+			});
+		});
+
+		//当前激活选项
+		var activeTab = subpages[0];
+		var title = document.getElementById("title");
+		
+		//选项卡点击事件
+		mui('.mui-bar-tab').on('tap', 'a', function(e) {
+
+			var targetTab = this.getAttribute('href');
+
+			var data_index = this.getAttribute('data-index');
+			
+			//设置样式
+	        $('#tab_bar').find('img').each(function(i,item){
+	        	
+	        	$(this).attr('src',icon_arr[i].def);
+	        	
+	        });
+	        $('#tab_bar').find('img').eq(data_index).attr('src',icon_arr[data_index].act);
+			
+			
+
+			if(targetTab == activeTab) {
+				return;
+			}
+			
+			//更换标题
+			title.innerHTML = this.querySelector('.mui-tab-label').innerHTML;
+			
+			//显示目标选项卡
+			//若为iOS平台或非首次显示，则直接显示
+			if(mui.os.ios || aniShow[targetTab]) {
+				plus.webview.show(targetTab);
+			} else {
+				//否则，使用fade-in动画，且保存变量
+				//				var temp = {};
+				//				temp[targetTab] = "true";
+				//				mui.extend(aniShow, temp);
+				plus.webview.show(targetTab, "fade-in", 300);
+			}
+			//隐藏当前;
+			plus.webview.hide(activeTab);
+			//更改当前活跃的选项卡
+			activeTab = targetTab;
+		});
+		//自定义事件，模拟点击“首页选项卡”
+		document.addEventListener('gohome', function() {
+			var defaultTab = document.getElementById("defaultTab");
+			//模拟首页点击
+			mui.trigger(defaultTab, 'tap');
+			//切换选项卡高亮
+			var current = document.querySelector(".mui-bar-tab>.mui-tab-item.mui-active");
+			if(defaultTab !== current) {
+				current.classList.remove('mui-active');
+				defaultTab.classList.add('mui-active');
+			}
+		});
+
+		if(window.plus) {
+			plusReady();
+		} else {
+			document.addEventListener('plusready', plusReady, false);
+		}
+
+		function plusReady() {
+
+            //设置页面顶部距离
+			top_offset = (Math.round(plus.navigator.getStatusbarHeight()) + 45);
+			subpage_style = {
+				//			top: '100px',
+				top: top_offset + 'px',
+				bottom: '51px'
+			};
+
+			var ws = plus.webview.currentWebview();
+			ws.addEventListener('show', function(e) {
+				//获取链接
+				//获取跳转链接
+				$.ajax({
+					type: "POST",
+					url: globalData.url + '/index.php/api/Users/services',
+					async: false,
+					success: function(res) {
+						var res = JSON.parse(res);
+						if(res.status == 200) {
+							window.localStorage.setItem('path_data', JSON.stringify(res.data))
+						}
+					}
+				});
+
+			}, false);
+		}
+	</script>
+</html>

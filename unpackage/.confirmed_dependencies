@@ -1,111 +1,284 @@
 {
-	"index.html": {
-		"resources": [
-			"dist/img/service.png",
-			"dist/img/recommend1.png",
-			"dist/img/credit.png",
-			"dist/img/broadcast.png",
-			"js/immersed.js",
-			"js/common.js",
-			"dist/js/index.js",
-			"dist/img/hot.png",
-			"css/common.css",
-			"dist/img/banner.png",
-			"dist/css/index.css",
-			"dist/img/activity.png",
-			"js/update.js",
-			"js/shortcut.js",
-			"dist/img/grouping1.png",
-			"dist/css/cre_index.css",
-			"dist/js/base.js",
-			"dist/img/credit_query.png",
-			"dist/js/vue_mian.js",
-			"dist/js/index1.js",
-			"dist/js/ser_index.js",
-			"swipeslider/css/style.css",
-			"swipeslider/js/swipeslider.min.js",
-			"dist/img/per_bg.png",
-			"swipeslider/css/swipeslider.css",
-			"dist/css/per_indx.css",
-			"dist/js/jquery-2.2.4.min.js",
-			"dist/img/service1.png",
-			"dist/img/recommend.png",
-			"dist/img/grouping.png"
-		],
-		"refer": [
-			"pages/credit/cre_index.html",
-			"pages/credit/cre_list.html",
-			"pages/credit/cre_dateils.html",
-			"test.html",
-			"pages/blank_page/webview_embed.html",
-			"about.html"
-		]
-	},
-	"pages/credit/cre_index.html": {
-		"resources": [
-			"dist/img/service.png",
-			"dist/img/recommend.png",
-			"dist/css/cre_index.css",
-			"js/immersed.js",
-			"js/common.js",
-			"dist/js/index.js",
-			"dist/img/hot.png",
-			"css/common.css",
-			"dist/img/activity.png",
-			"dist/img/credit1.png",
-			"js/update.js",
-			"js/shortcut.js",
-			"dist/img/grouping1.png"
-		]
-	},
-	"pages/credit/cre_list.html": {
-		"resources": [
-			"dist/css/cre_list.css",
-			"dist/js/jquery-2.2.4.min.js",
-			"js/common.js",
-			"dist/img/hot.png",
-			"css/common.css",
-			"dist/img/activity.png",
-			"js/update.js",
-			"js/shortcut.js",
-			"js/immersed.js"
-		]
-	},
-	"pages/credit/cre_dateils.html": {
-		"resources": [
-			"dist/css/cre_dateils.css",
-			"dist/img/time.png",
-			"dist/img/credit_icon.png",
-			"dist/js/cre_dateils.js",
-			"dist/js/jquery-2.2.4.min.js",
-			"js/common.js",
-			"css/common.css",
-			"dist/img/activity.png",
-			"js/update.js",
-			"js/shortcut.js",
-			"js/immersed.js"
-		]
-	},
-	"test.html": {
-		"resources": [
-			"js/common.js",
-			"css/common.css",
-			"js/immersed.js"
-		]
-	},
-	"pages/blank_page/webview_embed.html": {
-		"resources": [
-			"js/common.js",
-			"css/common.css",
-			"js/immersed.js"
-		]
-	},
-	"about.html": {
-		"resources": [
-			"js/common.js",
-			"icon.png",
-			"css/common.css",
-			"js/immersed.js"
-		]
-	}
+  "index.html": {
+    "resources": [
+      "dist/img/service.png",
+      "dist/img/recommend1.png",
+      "dist/img/credit.png",
+      "dist/img/broadcast.png",
+      "js/immersed.js",
+      "js/common.js",
+      "dist/js/index.js",
+      "dist/img/hot.png",
+      "css/common.css",
+      "dist/img/banner.png",
+      "dist/css/index.css",
+      "dist/img/activity.png",
+      "js/update.js",
+      "js/shortcut.js",
+      "dist/img/grouping1.png",
+      "dist/css/cre_index.css",
+      "dist/js/base.js",
+      "dist/img/credit_query.png",
+      "dist/js/vue_mian.js",
+      "dist/js/index1.js",
+      "dist/js/ser_index.js",
+      "swipeslider/css/style.css",
+      "swipeslider/js/swipeslider.min.js",
+      "dist/img/per_bg.png",
+      "swipeslider/css/swipeslider.css",
+      "dist/css/per_indx.css",
+      "dist/js/jquery-2.2.4.min.js",
+      "dist/img/service1.png",
+      "dist/img/recommend.png",
+      "dist/img/grouping.png",
+      "dist/guide/js/mui.min.js",
+      "dist/img/credit1.png",
+      "pages/credit/cre_dateils.html",
+      "dist/mui/js/mui.min.js",
+      "dist/mui/css/mui.min.css",
+      "pages/credit/cre_index.html",
+      "main.html",
+      "js/mui.min.js"
+    ],
+    "refer": [
+      "pages/credit/cre_index.html",
+      "pages/credit/cre_list.html",
+      "pages/credit/cre_dateils.html",
+      "test.html",
+      "pages/blank_page/webview_embed.html",
+      "about.html",
+      "pages/login/login.html",
+      "pages/person/application_list.html",
+      "pages/person/per_index.html",
+      "main.html",
+      "pages/person/per_inf.html",
+      "main_index.html",
+      "pages/login/register.html"
+    ]
+  },
+  "pages/credit/cre_index.html": {
+    "resources": [
+      "dist/img/service.png",
+      "dist/img/recommend.png",
+      "dist/css/cre_index.css",
+      "js/immersed.js",
+      "js/common.js",
+      "dist/js/index.js",
+      "dist/img/hot.png",
+      "css/common.css",
+      "dist/img/activity.png",
+      "dist/img/credit1.png",
+      "js/update.js",
+      "js/shortcut.js",
+      "dist/img/grouping1.png",
+      "dist/js/jquery-2.2.4.min.js",
+      "dist/js/cre_index.js",
+      "dist/js/vue_mian.js",
+      "dist/js/base.js"
+    ],
+    "refer": [
+      "pages/credit/cre_list.html",
+      "pages/credit/cre_dateils.html"
+    ]
+  },
+  "pages/credit/cre_list.html": {
+    "resources": [
+      "dist/css/cre_list.css",
+      "dist/js/jquery-2.2.4.min.js",
+      "js/common.js",
+      "dist/img/hot.png",
+      "css/common.css",
+      "dist/img/activity.png",
+      "js/update.js",
+      "js/shortcut.js",
+      "js/immersed.js",
+      "dist/js/cre_list.js",
+      "dist/js/base.js"
+    ],
+    "refer": [
+      "pages/credit/cre_dateils.html"
+    ]
+  },
+  "pages/credit/cre_dateils.html": {
+    "resources": [
+      "dist/css/cre_dateils.css",
+      "dist/img/time.png",
+      "dist/img/credit_icon.png",
+      "dist/js/cre_dateils.js",
+      "dist/js/jquery-2.2.4.min.js",
+      "js/common.js",
+      "css/common.css",
+      "dist/img/activity.png",
+      "js/update.js",
+      "js/shortcut.js",
+      "js/immersed.js",
+      "dist/js/base.js"
+    ],
+    "refer": [
+      "pages/login/login.html",
+      "pages/blank_page/webview_embed.html",
+      "pages/credit/cre_application.html"
+    ]
+  },
+  "test.html": {
+    "resources": [
+      "js/common.js",
+      "css/common.css",
+      "js/immersed.js"
+    ]
+  },
+  "pages/blank_page/webview_embed.html": {
+    "resources": [
+      "js/common.js",
+      "css/common.css",
+      "js/immersed.js"
+    ]
+  },
+  "about.html": {
+    "resources": [
+      "js/common.js",
+      "icon.png",
+      "css/common.css",
+      "js/immersed.js"
+    ]
+  },
+  "pages/login/login.html": {
+    "resources": [
+      "dist/js/jquery-2.2.4.min.js",
+      "js/common.js",
+      "css/common.css",
+      "dist/css/login.css",
+      "js/update.js",
+      "dist/js/login.js",
+      "js/shortcut.js",
+      "js/immersed.js",
+      "dist/js/base.js"
+    ],
+    "refer": [
+      "pages/login/register.html"
+    ]
+  },
+  "pages/login/register.html": {
+    "resources": [
+      "dist/css/register.css",
+      "dist/js/register.js",
+      "dist/js/jquery-2.2.4.min.js",
+      "js/common.js",
+      "css/common.css",
+      "js/update.js",
+      "js/shortcut.js",
+      "js/immersed.js",
+      "dist/js/base.js"
+    ],
+    "refer": [
+      "pages/login/login.html"
+    ]
+  },
+  "pages/person/application_list.html": {
+    "resources": [
+      "dist/js/jquery-2.2.4.min.js",
+      "dist/css/application_list.css",
+      "dist/js/application_list.js",
+      "js/common.js",
+      "css/common.css",
+      "js/update.js",
+      "js/shortcut.js",
+      "js/immersed.js",
+      "dist/js/base.js"
+    ]
+  },
+  "pages/person/per_index.html": {
+    "resources": [
+      "dist/img/credit_query.png",
+      "dist/img/grouping.png",
+      "dist/img/credit.png",
+      "dist/img/per_bg.png",
+      "dist/css/per_indx.css",
+      "dist/js/base.js",
+      "dist/img/recommend.png",
+      "dist/img/activity.png",
+      "dist/js/jquery-2.2.4.min.js",
+      "js/common.js",
+      "js/update.js",
+      "js/shortcut.js",
+      "js/immersed.js",
+      "pages/service/ser_index.html",
+      "dist/js/per_index.js"
+    ],
+    "refer": [
+      "pages/service/ser_index.html",
+      "pages/person/per_inf.html",
+      "pages/person/application_list.html",
+      "pages/blank_page/webview_embed.html",
+      "pages/login/register.html"
+    ]
+  },
+  "main.html": {
+    "resources": [
+      "swipeslider/css/swipeslider.css",
+      "dist/img/recommend1.png",
+      "dist/img/broadcast.png",
+      "js/immersed.js",
+      "dist/js/base.js",
+      "dist/js/jquery-2.2.4.min.js",
+      "dist/js/vue_mian.js",
+      "dist/js/index1.js",
+      "js/common.js",
+      "dist/js/index.js",
+      "dist/js/ser_index.js",
+      "swipeslider/css/style.css",
+      "dist/css/index.css",
+      "swipeslider/js/swipeslider.min.js",
+      "js/shortcut.js",
+      "dist/img/service.png",
+      "dist/img/credit.png",
+      "dist/css/cre_index.css",
+      "dist/css/per_indx.css",
+      "dist/img/credit_query.png",
+      "dist/img/hot.png",
+      "css/common.css",
+      "dist/img/grouping1.png",
+      "dist/img/service1.png",
+      "dist/img/recommend.png",
+      "dist/img/credit1.png",
+      "dist/img/per_bg.png",
+      "js/mui.min.js",
+      "css/mui.min.css"
+    ],
+    "refer": [
+      "pages/login/login.html",
+      "pages/credit/cre_dateils.html",
+      "pages/credit/cre_list.html",
+      "pages/blank_page/demo.html"
+    ]
+  },
+  "pages/service/ser_index.html": {
+    "resources": [
+      "dist/js/jquery-2.2.4.min.js",
+      "js/common.js",
+      "dist/js/ser_index.js",
+      "dist/img/service1.png",
+      "js/update.js",
+      "js/shortcut.js",
+      "js/immersed.js"
+    ]
+  },
+  "guid_login.html": {
+    "refer": [
+      "index.html",
+      "pages/login/register.html"
+    ]
+  },
+  "main_index.html": {
+    "resources": [
+      "main.html",
+      "dist/img/recommend.png",
+      "dist/img/grouping1.png"
+    ],
+    "refer": [
+      "pages/credit/cre_index.html",
+      "main.html",
+      "pages/person/per_index.html"
+    ]
+  }
 }

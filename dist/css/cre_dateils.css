@@ -25,6 +25,9 @@ body{
 .success_rate  .wrap{
 	padding-left:.75rem;
 	position:relative;
+	display:flex;
+	flex-direction:column;
+	justify-content:center;
 	
 	
 }

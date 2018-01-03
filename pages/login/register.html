@@ -16,7 +16,7 @@
 	<body>
 		<header id="header">
 			<div id="back" class="nvbt iback" onclick="back()"></div>
-			<div class="nvtt">信用贷款</div>
+			<div class="nvtt">必须金服</div>
 			<!--<div class="nvbt iabout" onclick="clicked('about.html','zoom-fade-out',true)"></div>-->
 		</header>
 		<div class="parent" id="register">
@@ -32,7 +32,7 @@
             			<div class="input_group">
             				<label for="test">验证码</label>
             				<input type="number"  placeholder="输入验证码" id="test" v-model:value="test_code"/>
-            				<span class="get_code" v-on:click="get_testcode">获取验证码</span>
+            				<span class="get_code" v-on:click="get_testcode">{{code_tip}}</span>
             			</div>
             			<div class="input_group">
             				<label for="password">密码</label>

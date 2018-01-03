@@ -8,7 +8,7 @@
 
 .parent{
 	/*padding: .42rem 0 .51rem;*/
-	padding: 0 0 .51rem;
+	/*padding: 0 0 .51rem;*/
 }
 
 
@@ -223,6 +223,8 @@
 	box-sizing:border-box;
 	padding-right:.2rem;
 	position:relative;
+	line-height:.6rem;
+	text-align:right;
 }
 .credit_list li .top .stages .right img{
 	display:block;
@@ -241,6 +243,20 @@
 	overflow: hidden;
 	text-overflow:ellipsis;
 	text-align:right;
+}
+
+.credit_list li .top .stages .account span{
+	display:inline-block;
+	font:.13rem/.2rem '微软雅黑';
+	color:#6e6e6e;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 1;
+	overflow: hidden;
+	text-overflow:ellipsis;
+	text-align:right;
+	padding:0 .1rem;
+	background:#f8b6b8;
+	border-radius:.03rem;
 }
 
 /*rate*/
@@ -313,10 +329,23 @@
 	   transform:translateY(0);
 	}
 	100%{
-		transform:translateY(-92%);
+		transform:translateY(-100%);
 	}
 }
 
+
+/*退出登录*/
+.signout {
+	text-align:center;
+	background:#fff;
+	margin:.2rem 0;
+}
+.signout  span{
+	display:inline-block;
+	font: .16rem/.6rem '微软雅黑';
+    color: #CF2D28;
+    
+}
 
 
 

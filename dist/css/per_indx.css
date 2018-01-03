@@ -23,6 +23,7 @@
 	padding: .43rem .3rem;
 	background: url('../../dist/img/per_bg.png') no-repeat center;
 	background-size: 100%;
+	position:relative;
 }
 
 .per_img .msg {
@@ -30,6 +31,7 @@
 	flex-direction: row;
 	justify-content: flex-start;
 	flex-wrap: wrap;
+	position:relative;
 }
 .per_img .msg img{
     width:100%;
@@ -58,6 +60,7 @@
 }
 .per_img .msg span {
 	display: -webkit-box;
+	width:36%;
 	-webkit-box-orient: vertical;
 	-webkit-line-clamp: 1;
 	/*overflow: hidden;*/
@@ -108,4 +111,36 @@
 	font:.16rem/.6rem '微软雅黑';
 	color:#1d1d1d;
 	text-align:left;
+}
+
+
+.signout {
+	text-align:center;
+	background:#fff;
+	margin:.2rem 0;
+}
+.signout  span{
+	display:inline-block;
+	font: .16rem/.6rem '微软雅黑';
+    color: #CF2D28;
+    
+}
+
+
+/*测试号登录*/
+.per_img .singout{
+
+    display:inline-block;
+    width:44%;
+    position:absolute;
+    right:-.2rem;
+    bottom:0;
+}
+.per_img .singout span{
+	display:block;
+	width:100%;
+	margin:0 auto;
+    font: .16rem/.68rem '微软雅黑';
+    color: #CF2D28;
+    text-align:center;
 }

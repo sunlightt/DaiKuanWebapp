@@ -102,11 +102,6 @@
 		"Barcode": {
 			"description": "二维码扫描"
 		},
-
-
-
-
-
 		"Speech": {
 			"description": "语音识别"
 		}
@@ -114,7 +109,7 @@
 	"plus": {
 		"splashscreen": {
 			"autoclose": false,/*是否自动关闭程序启动界面，true表示应用加载应用入口页面后自动关闭；false则需调plus.navigator.closeSplashscreen()关闭*/
-			"waiting": true
+			"waiting": false
 		},
 		"statusbar": {
 			"immersed": true,
@@ -195,31 +190,47 @@
 			"icons": {
 				"ios": {
 					"prerendered": true, /*应用图标是否已经高亮处理，在iOS6及以下设备上有效*/
-					"auto": "", /*应用图标，分辨率：512x512，用于自动生成各种尺寸程序图标*/
+					/*应用图标，分辨率：512x512，用于自动生成各种尺寸程序图标*/
 					"iphone": {
 						"normal": "unpackage/res/icons/57x57.png", /*iPhone3/3GS程序图标，分辨率：57x57*/
 						"retina": "unpackage/res/icons/114x114.png", /*iPhone4程序图标，分辨率：114x114*/
-						"retina7": "unpackage/res/icons/120x120.png", /*iPhone4S/5/6程序图标，分辨率：120x120*/
-						"retina8": "unpackage/res/icons/180x180.png", /*iPhone6 Plus程序图标，分辨率：180x180*/
+						/*iPhone4S/5/6程序图标，分辨率：120x120*/
+						/*iPhone6 Plus程序图标，分辨率：180x180*/
 						"spotlight-normal": "unpackage/res/icons/29x29.png", /*iPhone3/3GS Spotlight搜索程序图标，分辨率：29x29*/
 						"spotlight-retina": "unpackage/res/icons/58x58.png", /*iPhone4 Spotlight搜索程序图标，分辨率：58x58*/
-						"spotlight-retina7": "unpackage/res/icons/80x80.png", /*iPhone4S/5/6 Spotlight搜索程序图标，分辨率：80x80*/
+						/*iPhone4S/5/6 Spotlight搜索程序图标，分辨率：80x80*/
 						"settings-normal": "unpackage/res/icons/29x29.png", /*iPhone4设置页面程序图标，分辨率：29x29*/
-						"settings-retina": "unpackage/res/icons/58x58.png", /*iPhone4S/5/6设置页面程序图标，分辨率：58x58*/
-						"settings-retina8": "unpackage/res/icons/87x87.png"
+						/*iPhone4S/5/6设置页面程序图标，分辨率：58x58*/
+						"app@3x": "unpackage/res/icons/180x180.png",
+						"app@2x": "unpackage/res/icons/120x120.png",
+						"settings@2x": "unpackage/res/icons/58x58.png",
+						"settings@3x": "unpackage/res/icons/87x87.png",
+						"spotlight@3x": "unpackage/res/icons/120x120.png",
+						"spotlight@2x": "unpackage/res/icons/80x80.png",
+						"notification@3x": "unpackage/res/icons/60x60.png",
+						"notification@2x": "unpackage/res/icons/40x40.png"
 					},
 					"ipad": {
 						"normal": "unpackage/res/icons/72x72.png", /*iPad普通屏幕程序图标，分辨率：72x72*/
 						"retina": "unpackage/res/icons/144x144.png", /*iPad高分屏程序图标，分辨率：144x144*/
-						"normal7": "unpackage/res/icons/76x76.png", /*iPad iOS7程序图标，分辨率：76x76*/
-						"retina7": "unpackage/res/icons/152x152.png", /*iPad iOS7高分屏程序图标，分辨率：152x152*/
+						/*iPad iOS7程序图标，分辨率：76x76*/
+						/*iPad iOS7高分屏程序图标，分辨率：152x152*/
 						"spotlight-normal": "unpackage/res/icons/50x50.png", /*iPad Spotlight搜索程序图标，分辨率：50x50*/
 						"spotlight-retina": "unpackage/res/icons/100x100.png", /*iPad高分屏Spotlight搜索程序图标，分辨率：100x100*/
-						"spotlight-normal7": "unpackage/res/icons/40x40.png",/*iPad iOS7 Spotlight搜索程序图标，分辨率：40x40*/
-						"spotlight-retina7": "unpackage/res/icons/80x80.png",/*iPad iOS7高分屏Spotlight搜索程序图标，分辨率：80x80*/
-						"settings-normal": "unpackage/res/icons/29x29.png",/*iPad设置页面程序图标，分辨率：29x29*/
-						"settings-retina": "unpackage/res/icons/58x58.png"
-					}
+						/*iPad iOS7 Spotlight搜索程序图标，分辨率：40x40*/
+						/*iPad iOS7高分屏Spotlight搜索程序图标，分辨率：80x80*/
+						/*iPad设置页面程序图标，分辨率：29x29*/
+						"app": "unpackage/res/icons/76x76.png",
+						"app@2x": "unpackage/res/icons/152x152.png",
+						"settings": "unpackage/res/icons/29x29.png",
+						"proapp@2x": "unpackage/res/icons/167x167.png",
+						"spotlight": "unpackage/res/icons/40x40.png",
+						"settings@2x": "unpackage/res/icons/58x58.png",
+						"spotlight@2x": "unpackage/res/icons/80x80.png",
+						"notification": "unpackage/res/icons/20x20.png",
+						"notification@2x": "unpackage/res/icons/40x40.png"
+					},
+					"appstore": "unpackage/res/icons/1024x1024.png"
 				},
 				"android": {
 					"mdpi": "unpackage/res/icons/48x48.png", /*普通屏程序图标，分辨率：48x48*/
@@ -234,29 +245,29 @@
 				"ios": {
 					"iphone": {
 						"default": "", /*iPhone3启动图片选，分辨率：320x480*/
-						"retina35": "E:/otherDATA/图片/load1.png",/*3.5英寸设备(iPhone4)启动图片，分辨率：640x960*/
-						"retina40": "E:/otherDATA/图片/load1.png",/*4.0 英寸设备(iPhone5/iPhone5s)启动图片，分辨率：640x1136*/
-						"retina47": "E:/otherDATA/图片/load1.png",/*4.7 英寸设备(iPhone6)启动图片，分辨率：750x1334*/
-						"retina55": "E:/otherDATA/图片/load1.png",/*5.5 英寸设备(iPhone6 Plus)启动图片，分辨率：1242x2208*/
-						"retina55l": "E:/otherDATA/图片/load1.png"
+						"retina35": "E:/wrok/daikuanWebapp/data/贷款/贷款/640.png",/*3.5英寸设备(iPhone4)启动图片，分辨率：640x960*/
+						"retina40": "E:/wrok/daikuanWebapp/data/贷款/贷款/640.png",/*4.0 英寸设备(iPhone5/iPhone5s)启动图片，分辨率：640x1136*/
+						"retina47": "E:/wrok/daikuanWebapp/data/贷款/贷款/750.png",/*4.7 英寸设备(iPhone6)启动图片，分辨率：750x1334*/
+						"retina55": "E:/wrok/daikuanWebapp/data/贷款。/贷款。/appguide.png",/*5.5 英寸设备(iPhone6 Plus)启动图片，分辨率：1242x2208*/
+						"retina55l": "E:/wrok/daikuanWebapp/data/贷款。/贷款。/appguide.png"
 					},
 					"ipad": {
-						"portrait": "E:/otherDATA/图片/load1.png", /*iPad竖屏启动图片，分辨率：768x1004*/
-						"portrait-retina": "E:/otherDATA/图片/load1.png",/*iPad高分屏竖屏图片，分辨率：1536x2008*/
-						"landscape": "E:/otherDATA/图片/load1.png", /*iPad横屏启动图片，分辨率：1024x748*/
-						"landscape-retina": "E:/otherDATA/图片/load1.png", /*iPad高分屏横屏启动图片，分辨率：2048x1496*/
-						"portrait7": "E:/otherDATA/图片/load1.png", /*iPad iOS7竖屏启动图片，分辨率：768x1024*/
-						"portrait-retina7": "E:/otherDATA/图片/load1.png",/*iPad iOS7高分屏竖屏图片，分辨率：1536x2048*/
-						"landscape7": "E:/otherDATA/图片/load1.png", /*iPad iOS7横屏启动图片，分辨率：1024x768*/
-						"landscape-retina7": "E:/otherDATA/图片/load1.png"
+						"portrait": "E:/wrok/daikuanWebapp/data/贷款。/贷款。/appguide.png", /*iPad竖屏启动图片，分辨率：768x1004*/
+						"portrait-retina": "E:/wrok/daikuanWebapp/data/贷款。/贷款。/appguide.png",/*iPad高分屏竖屏图片，分辨率：1536x2008*/
+						"landscape": "E:/wrok/daikuanWebapp/data/贷款。/贷款。/appguide.png", /*iPad横屏启动图片，分辨率：1024x748*/
+						"landscape-retina": "E:/wrok/daikuanWebapp/data/贷款。/贷款。/appguide.png", /*iPad高分屏横屏启动图片，分辨率：2048x1496*/
+						"portrait7": "E:/wrok/daikuanWebapp/data/贷款。/贷款。/appguide.png", /*iPad iOS7竖屏启动图片，分辨率：768x1024*/
+						"portrait-retina7": "E:/wrok/daikuanWebapp/data/贷款。/贷款。/appguide.png",/*iPad iOS7高分屏竖屏图片，分辨率：1536x2048*/
+						"landscape7": "E:/wrok/daikuanWebapp/data/贷款。/贷款。/appguide.png", /*iPad iOS7横屏启动图片，分辨率：1024x768*/
+						"landscape-retina7": "E:/wrok/daikuanWebapp/data/贷款。/贷款。/appguide.png"
 					}
 				},
 				"android": {
 					"mdpi": "", /*普通屏启动图片，分辨率：240x282*/
 					"ldpi": "", /*大屏启动图片，分辨率：320x442*/
-					"hdpi": "E:/otherDATA/图片/load1.png", /*高分屏启动图片，分辨率：480x762*/
-					"xhdpi": "E:/otherDATA/图片/load1.png", /*720P高分屏启动图片，分辨率：720x1242*/
-					"xxhdpi": "E:/otherDATA/图片/load1.png"
+					"hdpi": "E:/wrok/daikuanWebapp/data/贷款。/贷款。/appguide.png", /*高分屏启动图片，分辨率：480x762*/
+					"xhdpi": "E:/wrok/daikuanWebapp/data/贷款。/贷款。/appguide.png", /*720P高分屏启动图片，分辨率：720x1242*/
+					"xxhdpi": "E:/wrok/daikuanWebapp/data/贷款。/贷款。/appguide.png"
 				}
 			},
 			"plugins": {
@@ -272,198 +283,6 @@
 	},
 	"dependencies": {
 		"pages": {
-			"plus/doc.html": {
-				"href": "plus/doc.html",
-				"priority": 29,
-				"resources": [
-					"js/immersed.js"
-				],
-				"refer": [
-					"doc/camera.html"
-				]
-			},
-			"plus/payment.html": {
-				"href": "plus/payment.html",
-				"resources": [
-					"css/common.css",
-					"js/common.js",
-					"js/immersed.js"
-				],
-				"refer": [
-					"plus/doc.html",
-					"doc/payment.html"
-				],
-				"priority": 0
-			},
-			"plus/runtime.html": {
-				"href": "plus/runtime.html",
-				"resources": [
-					"css/common.css",
-					"js/common.js",
-					"js/immersed.js"
-				],
-				"refer": [
-					"plus/doc.html",
-					"doc/runtime.html",
-					"plus/runtime_launch.html"
-				],
-				"priority": 1
-			},
-			"plus/barcode.html": {
-				"href": "plus/barcode.html",
-				"resources": [
-					"img/barcode.png",
-					"css/common.css",
-					"js/common.js",
-					"js/immersed.js"
-				],
-				"refer": [
-					"plus/doc.html",
-					"doc/barcode.html",
-					"plus/barcode_scan.html",
-					"plus/barcode_scan2.html"
-				],
-				"priority": 2
-			},
-			"plus/xhr.html": {
-				"href": "plus/xhr.html",
-				"resources": [
-					"css/common.css",
-					"js/common.js",
-					"js/immersed.js"
-				],
-				"refer": [
-					"plus/doc.html",
-					"doc/xhr.html"
-				],
-				"priority": 3
-			},
-			"plus/oauth.html": {
-				"href": "plus/oauth.html",
-				"resources": [
-					"css/common.css",
-					"js/common.js",
-					"js/immersed.js"
-				],
-				"refer": [
-					"plus/doc.html",
-					"doc/oauth.html"
-				],
-				"priority": 4
-			},
-			"plus/share.html": {
-				"href": "plus/share.html",
-				"resources": [
-					"css/common.css",
-					"img/add.png",
-					"logo.png",
-					"js/common.js",
-					"js/immersed.js"
-				],
-				"refer": [
-					"plus/doc.html",
-					"doc/share.html"
-				],
-				"priority": 5
-			},
-			"plus/njs_android_shortcut.html": {
-				"href": "plus/njs_android_shortcut.html",
-				"resources": [
-					"css/common.css",
-					"icon.png",
-					"js/common.js",
-					"js/immersed.js"
-				],
-				"refer": [
-					"plus/doc.html"
-				],
-				"priority": 6
-			},
-			"plus/njs_ios_gamecenter.html": {
-				"href": "plus/njs_ios_gamecenter.html",
-				"resources": [
-					"js/common.js",
-					"js/immersed.js",
-					"img/5.jpg"
-				],
-				"refer": [
-					"plus/doc.html"
-				],
-				"priority": 7
-			},
-			"plus/njs.html": {
-				"href": "plus/njs.html",
-				"resources": [
-					"css/common.css",
-					"js/common.js",
-					"js/immersed.js"
-				],
-				"refer": [
-					"plus/njs_android_shortcut.html",
-					"plus/njs_ios_gamecenter.html",
-					"plus/doc.html",
-					"doc/native.js.html",
-					"plus/njs_efficient.html"
-				],
-				"priority": 6
-			},
-			"plus/downloader.html": {
-				"href": "plus/downloader.html",
-				"resources": [
-					"css/common.css",
-					"js/common.js",
-					"js/immersed.js"
-				],
-				"refer": [
-					"plus/doc.html",
-					"doc/downloader.html"
-				],
-				"priority": 7
-			},
-			"plus/nativeui_waiting.html": {
-				"href": "plus/nativeui_waiting.html",
-				"resources": [
-					"img/waiting.png",
-					"css/common.css",
-					"js/common.js",
-					"js/immersed.js"
-				],
-				"refer": [
-					"plus/doc.html"
-				],
-				"priority": 8
-			},
-			"plus/nativeui.html": {
-				"href": "plus/nativeui.html",
-				"resources": [
-					"css/common.css",
-					"js/common.js",
-					"js/immersed.js"
-				],
-				"refer": [
-					"plus/nativeui_waiting.html",
-					"plus/doc.html",
-					"doc/nativeUI.html"
-				],
-				"priority": 8
-			},
-			"plus/file.html": {
-				"href": "plus/file.html",
-				"resources": [
-					"css/common.css",
-					"img/fdir.png",
-					"img/ffile.png",
-					"img/fdisk.png",
-					"img/fup.png",
-					"js/common.js",
-					"js/immersed.js"
-				],
-				"refer": [
-					"plus/doc.html",
-					"doc/io.html"
-				],
-				"priority": 9
-			},
 			"index.html": {
 				"href": "index.html",
 				"resources": [
@@ -497,7 +316,15 @@
 					"dist/js/jquery-2.2.4.min.js",
 					"dist/img/service1.png",
 					"dist/img/recommend.png",
-					"dist/img/grouping.png"
+					"dist/img/grouping.png",
+					"dist/guide/js/mui.min.js",
+					"dist/img/credit1.png",
+					"pages/credit/cre_dateils.html",
+					"dist/mui/js/mui.min.js",
+					"dist/mui/css/mui.min.css",
+					"pages/credit/cre_index.html",
+					"main.html",
+					"js/mui.min.js"
 				],
 				"refer": [
 					"plus/payment.html",
@@ -531,370 +358,17 @@
 					"about.html",
 					"plus/events.html",
 					"plus/nativeobj.html",
-					"pages/credit/cre_index.html",
 					"pages/credit/cre_list.html",
-					"pages/credit/cre_dateils.html",
 					"test.html",
-					"pages/blank_page/webview_embed.html"
+					"pages/blank_page/webview_embed.html",
+					"pages/login/login.html",
+					"pages/person/application_list.html",
+					"pages/person/per_index.html",
+					"pages/person/per_inf.html",
+					"main_index.html",
+					"pages/login/register.html"
 				],
-				"priority": 0
-			},
-			"plus/zip.html": {
-				"href": "plus/zip.html",
-				"resources": [
-					"css/common.css",
-					"img/shake/1.jpg",
-					"js/common.js",
-					"js/immersed.js"
-				],
-				"refer": [
-					"plus/doc.html",
-					"index.html",
-					"doc/zip.html"
-				],
-				"priority": 10
-			},
-			"plus/push.html": {
-				"href": "plus/push.html",
-				"resources": [
-					"css/common.css",
-					"js/common.js",
-					"js/immersed.js"
-				],
-				"refer": [
-					"plus/doc.html",
-					"doc/push.html"
-				],
-				"priority": 11
-			},
-			"plus/statistic.html": {
-				"href": "plus/statistic.html",
-				"resources": [
-					"css/common.css",
-					"js/common.js",
-					"js/immersed.js"
-				],
-				"refer": [
-					"plus/doc.html"
-				],
-				"priority": 12
-			},
-			"plus/audio.html": {
-				"href": "plus/audio.html",
-				"resources": [
-					"css/common.css",
-					"js/common.js",
-					"js/immersed.js",
-					"img/arecord.png",
-					"img/astop.png",
-					"audio/friendship.mp3"
-				],
-				"refer": [
-					"plus/doc.html",
-					"doc/audio.html"
-				],
-				"priority": 13
-			},
-			"plus/uploader_ret.html": {
-				"href": "plus/uploader_ret.html",
-				"resources": [
-					"css/common.css",
-					"js/common.js",
-					"js/immersed.js"
-				],
-				"refer": [
-					"plus/doc.html"
-				],
-				"priority": 14
-			},
-			"plus/uploader.html": {
-				"href": "plus/uploader.html",
-				"resources": [
-					"css/common.css",
-					"js/common.js",
-					"js/immersed.js"
-				],
-				"refer": [
-					"plus/uploader_ret.html",
-					"plus/doc.html",
-					"doc/uploader.html"
-				],
-				"priority": 14
-			},
-			"plus/storage.html": {
-				"href": "plus/storage.html",
-				"resources": [
-					"css/common.css",
-					"js/common.js",
-					"js/immersed.js"
-				],
-				"refer": [
-					"plus/doc.html",
-					"doc/storage.html"
-				],
-				"priority": 15
-			},
-			"plus/accelerometer.html": {
-				"href": "plus/accelerometer.html",
-				"resources": [
-					"css/common.css",
-					"js/common.js",
-					"js/immersed.js"
-				],
-				"refer": [
-					"plus/doc.html",
-					"doc/accelerometer.html",
-					"plus/accelerometer_shake.html"
-				],
-				"priority": 16
-			},
-			"plus/navigator_status.html": {
-				"href": "plus/navigator_status.html",
-				"resources": [
-					"css/common.css",
-					"js/common.js",
-					"js/immersed.js"
-				],
-				"refer": [
-					"plus/doc.html"
-				],
-				"priority": 18
-			},
-			"plus/navigator.html": {
-				"href": "plus/navigator.html",
-				"resources": [
-					"css/common.css",
-					"js/common.js",
-					"js/immersed.js"
-				],
-				"refer": [
-					"plus/doc.html",
-					"plus/navigator_status.html",
-					"doc/navigator.html"
-				],
-				"priority": 17
-			},
-			"plus/message.html": {
-				"href": "plus/message.html",
-				"resources": [
-					"css/common.css",
-					"img/helloh5.jpg",
-					"js/common.js",
-					"js/immersed.js"
-				],
-				"refer": [
-					"plus/doc.html",
-					"doc/messaging.html"
-				],
-				"priority": 18
-			},
-			"plus/speech.html": {
-				"href": "plus/speech.html",
-				"resources": [
-					"css/common.css",
-					"js/common.js",
-					"js/immersed.js"
-				],
-				"refer": [
-					"plus/doc.html",
-					"doc/speech.html"
-				],
-				"priority": 19
-			},
-			"plus/proximity.html": {
-				"href": "plus/proximity.html",
-				"resources": [
-					"css/common.css",
-					"js/common.js",
-					"js/immersed.js"
-				],
-				"refer": [
-					"plus/doc.html",
-					"doc/proximity.html"
-				],
-				"priority": 20
-			},
-			"plus/maps_map_sub.html": {
-				"href": "plus/maps_map_sub.html",
-				"resources": [
-					"css/common.css"
-				],
-				"priority": 22,
-				"refer": []
-			},
-			"plus/maps_map.html": {
-				"href": "plus/maps_map.html",
-				"resources": [
-					"css/common.css",
-					"js/common.js",
-					"js/immersed.js",
-					"logo.png",
-					"plus/maps_map_sub.html"
-				],
-				"refer": [
-					"plus/doc.html",
-					"plus/maps_map_sub.html"
-				],
-				"priority": 21
-			},
-			"plus/maps.html": {
-				"href": "plus/maps.html",
-				"resources": [
-					"css/common.css",
-					"js/common.js",
-					"js/immersed.js"
-				],
-				"refer": [
-					"plus/maps_map.html",
-					"plus/doc.html",
-					"doc/maps.html"
-				],
-				"priority": 21
-			},
-			"plus/camera_image.html": {
-				"href": "plus/camera_image.html",
-				"resources": [
-					"js/common.js",
-					"css/common.css"
-				],
-				"refer": [
-					"plus/doc.html"
-				],
-				"priority": 22
-			},
-			"plus/camera_video.html": {
-				"href": "plus/camera_video.html",
-				"resources": [
-					"css/common.css",
-					"js/common.js"
-				],
-				"refer": [
-					"plus/doc.html"
-				],
-				"priority": 23
-			},
-			"plus/camera.html": {
-				"href": "plus/camera.html",
-				"resources": [
-					"css/common.css",
-					"js/common.js",
-					"js/immersed.js"
-				],
-				"refer": [
-					"plus/camera_image.html",
-					"plus/camera_video.html",
-					"plus/doc.html",
-					"doc/camera.html"
-				],
-				"priority": 22
-			},
-			"plus/device.html": {
-				"href": "plus/device.html",
-				"resources": [
-					"css/common.css",
-					"js/common.js",
-					"js/immersed.js"
-				],
-				"refer": [
-					"plus/doc.html",
-					"doc/device.html"
-				],
-				"priority": 23
-			},
-			"plus/orientation.html": {
-				"href": "plus/orientation.html",
-				"resources": [
-					"css/common.css",
-					"js/common.js",
-					"js/immersed.js"
-				],
-				"refer": [
-					"plus/doc.html",
-					"doc/orientation.html",
-					"plus/orientation_level.html",
-					"plus/orientation_compass.html"
-				],
-				"priority": 24
-			},
-			"plus/gallery.html": {
-				"href": "plus/gallery.html",
-				"resources": [
-					"css/common.css",
-					"js/common.js",
-					"js/immersed.js"
-				],
-				"refer": [
-					"plus/doc.html",
-					"doc/gallery.html"
-				],
-				"priority": 25
-			},
-			"plus/webview_pullrefresh_custom.html": {
-				"href": "plus/webview_pullrefresh_custom.html",
-				"resources": [
-					"css/common.css"
-				],
-				"priority": 26,
-				"refer": []
-			},
-			"plus/webview_pullhead_custom.html": {
-				"href": "plus/webview_pullhead_custom.html",
-				"resources": [
-					"css/common.css",
-					"img/pull_arrow.png",
-					"js/common.js",
-					"img/pull_fresh.png",
-					"js/immersed.js"
-				],
-				"refer": [
-					"plus/webview_pullrefresh_custom.html",
-					"plus/doc.html"
-				],
-				"priority": 26
-			},
-			"plus/webview_float.html": {
-				"href": "plus/webview_float.html",
-				"resources": [
-					"js/common.js",
-					"css/common.css",
-					"img/ui.png"
-				],
-				"refer": [
-					"plus/doc.html"
-				],
-				"priority": 27
-			},
-			"plus/webview.html": {
-				"href": "plus/webview.html",
-				"resources": [
-					"css/common.css",
-					"js/common.js",
-					"js/immersed.js"
-				],
-				"refer": [
-					"plus/webview_pullhead_custom.html",
-					"plus/webview_float.html",
-					"plus/doc.html",
-					"doc/webview.html",
-					"plus/webview_animation.html",
-					"plus/webview_embed.html",
-					"plus/webview_mask.html",
-					"plus/webview_pulltorefresh.html"
-				],
-				"priority": 26
-			},
-			"plus/geolocation.html": {
-				"href": "plus/geolocation.html",
-				"resources": [
-					"css/common.css",
-					"js/common.js",
-					"js/immersed.js"
-				],
-				"refer": [
-					"plus/doc.html",
-					"doc/geolocation.html"
-				],
-				"priority": 27
+				"priority": 1
 			},
 			"about.html": {
 				"href": "about.html",
@@ -909,545 +383,7 @@
 				"refer": [
 					"plus/doc.html"
 				],
-				"priority": 28
-			},
-			"plus/events.html": {
-				"href": "plus/events.html",
-				"resources": [
-					"css/common.css",
-					"js/common.js",
-					"js/immersed.js"
-				],
-				"refer": [
-					"plus/doc.html",
-					"doc/events.html"
-				],
-				"priority": 29
-			},
-			"doc/share.html": {
-				"href": "doc/share.html",
-				"resources": [
-					"doc/res/doc.css",
-					"doc/res/prettify.sons.css",
-					"doc/res/doc.js",
-					"doc/res/prettify.js"
-				],
-				"priority": 1,
-				"refer": []
-			},
-			"doc/webview.html": {
-				"href": "doc/webview.html",
-				"resources": [
-					"doc/res/doc.css",
-					"doc/res/prettify.sons.css",
-					"doc/res/doc.js",
-					"doc/res/prettify.js"
-				],
-				"priority": 5,
-				"refer": []
-			},
-			"plus/webview_new.html": {
-				"href": "plus/webview_new.html",
-				"resources": [
-					"js/immersed.js",
-					"js/common.js",
-					"css/common.css",
-					"img/ui.png"
-				],
-				"refer": [
-					"plus/doc.html"
-				],
-				"priority": 7
-			},
-			"plus/webview_animation.html": {
-				"href": "plus/webview_animation.html",
-				"resources": [
-					"js/immersed.js",
-					"js/common.js",
-					"css/common.css"
-				],
-				"refer": [
-					"plus/doc.html",
-					"plus/webview_new.html"
-				],
-				"priority": 6
-			},
-			"plus/webview_embed.html": {
-				"href": "plus/webview_embed.html",
-				"resources": [
-					"js/immersed.js",
-					"js/common.js",
-					"css/common.css"
-				],
-				"refer": [
-					"plus/doc.html"
-				],
-				"priority": 7
-			},
-			"plus/webview_mask_side.html": {
-				"href": "plus/webview_mask_side.html",
-				"resources": [
-					"js/common.js",
-					"css/common.css"
-				],
-				"refer": [
-					"plus/doc.html"
-				],
-				"priority": 9
-			},
-			"plus/webview_mask.html": {
-				"href": "plus/webview_mask.html",
-				"resources": [
-					"js/immersed.js",
-					"js/common.js",
-					"css/common.css"
-				],
-				"refer": [
-					"plus/doc.html",
-					"plus/webview_mask_side.html"
-				],
-				"priority": 8
-			},
-			"doc/accelerometer.html": {
-				"href": "doc/accelerometer.html",
-				"resources": [
-					"doc/res/doc.css",
-					"doc/res/prettify.sons.css",
-					"doc/res/doc.js",
-					"doc/res/prettify.js"
-				],
-				"priority": 4,
-				"refer": []
-			},
-			"plus/accelerometer_shake.html": {
-				"href": "plus/accelerometer_shake.html",
-				"resources": [
-					"js/immersed.js",
-					"js/common.js",
-					"audio/shake.wav",
-					"css/common.css",
-					"img/shakeup.png",
-					"img/shakedown.png",
-					"img/shake/1.jpg",
-					"img/shake/2.jpg",
-					"img/shake/3.jpg",
-					"img/shake/4.jpg"
-				],
-				"refer": [
-					"plus/doc.html"
-				],
-				"priority": 5
-			},
-			"doc/audio.html": {
-				"href": "doc/audio.html",
-				"resources": [
-					"doc/res/doc.css",
-					"doc/res/prettify.sons.css",
-					"doc/res/doc.js",
-					"doc/res/prettify.js"
-				],
-				"priority": 5,
-				"refer": []
-			},
-			"doc/barcode.html": {
-				"href": "doc/barcode.html",
-				"resources": [
-					"doc/res/doc.css",
-					"doc/res/prettify.sons.css",
-					"doc/res/doc.js",
-					"doc/res/prettify.js"
-				],
-				"priority": 6,
-				"refer": []
-			},
-			"plus/barcode_scan.html": {
-				"href": "plus/barcode_scan.html",
-				"resources": [
-					"js/common.js",
-					"css/common.css"
-				],
-				"refer": [
-					"plus/doc.html"
-				],
-				"priority": 7
-			},
-			"doc/camera.html": {
-				"href": "doc/camera.html",
-				"resources": [
-					"doc/res/doc.css",
-					"doc/res/prettify.sons.css",
-					"doc/res/doc.js",
-					"doc/res/prettify.js"
-				],
-				"priority": 9,
-				"refer": []
-			},
-			"doc/device.html": {
-				"href": "doc/device.html",
-				"resources": [
-					"doc/res/doc.css",
-					"doc/res/prettify.sons.css",
-					"doc/res/doc.js",
-					"doc/res/prettify.js"
-				],
-				"priority": 8,
-				"refer": []
-			},
-			"doc/downloader.html": {
-				"href": "doc/downloader.html",
-				"resources": [
-					"doc/res/doc.css",
-					"doc/res/prettify.sons.css",
-					"doc/res/doc.js",
-					"doc/res/prettify.js"
-				],
-				"priority": 9,
-				"refer": []
-			},
-			"doc/events.html": {
-				"href": "doc/events.html",
-				"resources": [
-					"doc/res/doc.css",
-					"doc/res/prettify.sons.css",
-					"doc/res/doc.js",
-					"doc/res/prettify.js"
-				],
-				"priority": 10,
-				"refer": []
-			},
-			"doc/io.html": {
-				"href": "doc/io.html",
-				"resources": [
-					"doc/res/doc.css",
-					"doc/res/prettify.sons.css",
-					"doc/res/doc.js",
-					"doc/res/prettify.js"
-				],
-				"priority": 11,
-				"refer": []
-			},
-			"doc/gallery.html": {
-				"href": "doc/gallery.html",
-				"resources": [
-					"doc/res/doc.css",
-					"doc/res/prettify.sons.css",
-					"doc/res/doc.js",
-					"doc/res/prettify.js"
-				],
-				"priority": 12,
-				"refer": []
-			},
-			"doc/geolocation.html": {
-				"href": "doc/geolocation.html",
-				"resources": [
-					"doc/res/doc.css",
-					"doc/res/prettify.sons.css",
-					"doc/res/doc.js",
-					"doc/res/prettify.js"
-				],
-				"priority": 13,
-				"refer": []
-			},
-			"doc/maps.html": {
-				"href": "doc/maps.html",
-				"resources": [
-					"doc/res/doc.css",
-					"doc/res/prettify.sons.css",
-					"doc/res/doc.js",
-					"doc/res/prettify.js"
-				],
-				"priority": 15,
-				"refer": []
-			},
-			"doc/messaging.html": {
-				"href": "doc/messaging.html",
-				"resources": [
-					"doc/res/doc.css",
-					"doc/res/prettify.sons.css",
-					"doc/res/doc.js",
-					"doc/res/prettify.js"
-				],
-				"priority": 15,
-				"refer": []
-			},
-			"doc/nativeUI.html": {
-				"href": "doc/nativeUI.html",
-				"resources": [
-					"doc/res/doc.css",
-					"doc/res/prettify.sons.css",
-					"doc/res/doc.js",
-					"doc/res/prettify.js"
-				],
-				"priority": 17,
-				"refer": []
-			},
-			"doc/navigator.html": {
-				"href": "doc/navigator.html",
-				"resources": [
-					"doc/res/doc.css",
-					"doc/res/prettify.sons.css",
-					"doc/res/doc.js",
-					"doc/res/prettify.js"
-				],
-				"priority": 18,
-				"refer": []
-			},
-			"doc/oauth.html": {
-				"href": "doc/oauth.html",
-				"resources": [
-					"doc/res/doc.css",
-					"doc/res/prettify.sons.css",
-					"doc/res/doc.js",
-					"doc/res/prettify.js"
-				],
-				"priority": 18,
-				"refer": []
-			},
-			"doc/orientation.html": {
-				"href": "doc/orientation.html",
-				"resources": [
-					"doc/res/doc.css",
-					"doc/res/prettify.sons.css",
-					"doc/res/doc.js",
-					"doc/res/prettify.js"
-				],
-				"priority": 19,
-				"refer": []
-			},
-			"plus/orientation_level.html": {
-				"href": "plus/orientation_level.html",
-				"resources": [
-					"js/immersed.js",
-					"js/common.js",
-					"css/common.css",
-					"img/orientationbg.png",
-					"img/orientationl.png",
-					"img/orientationb.png"
-				],
-				"refer": [
-					"plus/doc.html"
-				],
-				"priority": 20
-			},
-			"plus/orientation_compass.html": {
-				"href": "plus/orientation_compass.html",
-				"resources": [
-					"js/immersed.js",
-					"js/common.js",
-					"css/common.css",
-					"img/orientationa.png",
-					"img/orientationbg.png",
-					"img/orientationc.png"
-				],
-				"refer": [
-					"plus/doc.html"
-				],
-				"priority": 21
-			},
-			"doc/payment.html": {
-				"href": "doc/payment.html",
-				"resources": [
-					"doc/res/doc.css",
-					"doc/res/prettify.sons.css",
-					"doc/res/doc.js",
-					"doc/res/prettify.js"
-				],
-				"priority": 20,
-				"refer": []
-			},
-			"doc/proximity.html": {
-				"href": "doc/proximity.html",
-				"resources": [
-					"doc/res/doc.css",
-					"doc/res/prettify.sons.css",
-					"doc/res/doc.js",
-					"doc/res/prettify.js"
-				],
-				"priority": 21,
-				"refer": []
-			},
-			"doc/push.html": {
-				"href": "doc/push.html",
-				"resources": [
-					"doc/res/doc.css",
-					"doc/res/prettify.sons.css",
-					"doc/res/doc.js",
-					"doc/res/prettify.js"
-				],
-				"priority": 22
-			},
-			"doc/runtime.html": {
-				"href": "doc/runtime.html",
-				"resources": [
-					"doc/res/doc.css",
-					"doc/res/prettify.sons.css",
-					"doc/res/doc.js",
-					"doc/res/prettify.js"
-				],
-				"priority": 23,
-				"refer": []
-			},
-			"plus/runtime_launch.html": {
-				"href": "plus/runtime_launch.html",
-				"resources": [
-					"js/immersed.js",
-					"js/common.js",
-					"css/common.css"
-				],
-				"refer": [
-					"plus/doc.html"
-				],
-				"priority": 24
-			},
-			"doc/storage.html": {
-				"href": "doc/storage.html",
-				"resources": [
-					"doc/res/doc.css",
-					"doc/res/prettify.sons.css",
-					"doc/res/doc.js",
-					"doc/res/prettify.js"
-				],
-				"priority": 24,
-				"refer": []
-			},
-			"doc/uploader.html": {
-				"href": "doc/uploader.html",
-				"resources": [
-					"doc/res/doc.css",
-					"doc/res/prettify.sons.css",
-					"doc/res/doc.js",
-					"doc/res/prettify.js"
-				],
-				"priority": 26,
-				"refer": []
-			},
-			"doc/xhr.html": {
-				"href": "doc/xhr.html",
-				"resources": [
-					"doc/res/doc.css",
-					"doc/res/prettify.sons.css",
-					"doc/res/doc.js",
-					"doc/res/prettify.js"
-				],
-				"priority": 26,
-				"refer": []
-			},
-			"doc/zip.html": {
-				"href": "doc/zip.html",
-				"resources": [
-					"doc/res/doc.css",
-					"doc/res/prettify.sons.css",
-					"doc/res/doc.js",
-					"doc/res/prettify.js"
-				],
-				"priority": 28,
-				"refer": []
-			},
-			"doc/ios.html": {
-				"href": "doc/ios.html",
-				"resources": [
-					"doc/res/doc.css",
-					"doc/res/prettify.sons.css",
-					"doc/res/doc.js",
-					"doc/res/prettify.js"
-				],
-				"priority": 30,
-				"refer": []
-			},
-			"doc/android.html": {
-				"href": "doc/android.html",
-				"resources": [
-					"doc/res/doc.css",
-					"doc/res/prettify.sons.css",
-					"doc/res/doc.js",
-					"doc/res/prettify.js"
-				],
-				"priority": 31,
-				"refer": []
-			},
-			"doc/native.js.html": {
-				"href": "doc/native.js.html",
-				"resources": [
-					"doc/res/doc.css",
-					"doc/res/doc.js",
-					"doc/res/prettify.js"
-				],
-				"refer": [
-					"doc/ios.html",
-					"doc/android.html"
-				],
-				"priority": 30
-			},
-			"plus/njs_efficient.html": {
-				"href": "plus/njs_efficient.html",
-				"resources": [
-					"js/immersed.js",
-					"js/common.js",
-					"css/common.css"
-				],
-				"refer": [
-					"plus/doc.html"
-				],
-				"priority": 31
-			},
-			"plus/barcode_scan2.html": {
-				"href": "plus/barcode_scan2.html",
-				"resources": [
-					"js/common.js",
-					"css/common.css"
-				],
-				"priority": 7,
-				"refer": []
-			},
-			"doc/speech.html": {
-				"href": "doc/speech.html",
-				"resources": [
-					"doc/res/doc.css",
-					"doc/res/prettify.sons.css",
-					"doc/res/doc.js",
-					"doc/res/prettify.js"
-				],
-				"priority": 21,
-				"refer": []
-			},
-			"plus/webview_pulltorefresh.html": {
-				"href": "plus/webview_pulltorefresh.html",
-				"resources": [
-					"js/common.js",
-					"css/common.css"
-				],
-				"priority": 7
-			},
-			"doc/nativeobj.html": {
-				"href": "doc/nativeobj.html",
-				"resources": [
-					"doc/res/doc.css",
-					"doc/res/prettify.sons.css",
-					"doc/res/doc.js",
-					"doc/res/prettify.js"
-				],
-				"priority": 15
-			},
-			"plus/nativeobj_animation.html": {
-				"href": "plus/nativeobj_animation.html",
-				"resources": [
-					"js/common.js",
-					"css/common.css"
-				],
-				"priority": 16
-			},
-			"plus/nativeobj.html": {
-				"href": "plus/nativeobj.html",
-				"resources": [
-					"js/immersed.js",
-					"js/common.js",
-					"css/common.css"
-				],
-				"refer": [
-					"doc/nativeobj.html",
-					"plus/nativeobj_animation.html"
-				],
-				"priority": 15
+				"priority": 2
 			},
 			"pages/credit/cre_index.html": {
 				"resources": [
@@ -1463,10 +399,17 @@
 					"dist/img/credit1.png",
 					"js/update.js",
 					"js/shortcut.js",
-					"dist/img/grouping1.png"
+					"dist/img/grouping1.png",
+					"dist/js/jquery-2.2.4.min.js",
+					"dist/js/cre_index.js",
+					"dist/js/vue_mian.js",
+					"dist/js/base.js"
 				],
-				"refer": [],
-				"priority": 0
+				"refer": [
+					"pages/credit/cre_list.html",
+					"pages/credit/cre_dateils.html"
+				],
+				"priority": 3
 			},
 			"pages/credit/cre_list.html": {
 				"resources": [
@@ -1478,10 +421,14 @@
 					"dist/img/activity.png",
 					"js/update.js",
 					"js/shortcut.js",
-					"js/immersed.js"
+					"js/immersed.js",
+					"dist/js/cre_list.js",
+					"dist/js/base.js"
 				],
-				"refer": [],
-				"priority": 0
+				"refer": [
+					"pages/credit/cre_dateils.html"
+				],
+				"priority": 4
 			},
 			"pages/credit/cre_dateils.html": {
 				"resources": [
@@ -1495,10 +442,15 @@
 					"dist/img/activity.png",
 					"js/update.js",
 					"js/shortcut.js",
-					"js/immersed.js"
+					"js/immersed.js",
+					"dist/js/base.js"
 				],
-				"refer": [],
-				"priority": 0
+				"refer": [
+					"pages/login/login.html",
+					"pages/blank_page/webview_embed.html",
+					"pages/credit/cre_application.html"
+				],
+				"priority": 5
 			},
 			"test.html": {
 				"resources": [
@@ -1516,6 +468,154 @@
 					"js/immersed.js"
 				],
 				"refer": [],
+				"priority": 6
+			},
+			"pages/login/login.html": {
+				"resources": [
+					"dist/js/jquery-2.2.4.min.js",
+					"js/common.js",
+					"css/common.css",
+					"dist/css/login.css",
+					"js/update.js",
+					"dist/js/login.js",
+					"js/shortcut.js",
+					"js/immersed.js",
+					"dist/js/base.js"
+				],
+				"refer": [
+					"pages/login/register.html"
+				],
+				"priority": 0
+			},
+			"pages/login/register.html": {
+				"resources": [
+					"dist/css/register.css",
+					"dist/js/register.js",
+					"dist/js/jquery-2.2.4.min.js",
+					"js/common.js",
+					"css/common.css",
+					"js/update.js",
+					"js/shortcut.js",
+					"js/immersed.js",
+					"dist/js/base.js"
+				],
+				"refer": [
+					"pages/login/login.html"
+				],
+				"priority": 0
+			},
+			"pages/person/application_list.html": {
+				"resources": [
+					"dist/js/jquery-2.2.4.min.js",
+					"dist/css/application_list.css",
+					"dist/js/application_list.js",
+					"js/common.js",
+					"css/common.css",
+					"js/update.js",
+					"js/shortcut.js",
+					"js/immersed.js",
+					"dist/js/base.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"pages/person/per_index.html": {
+				"resources": [
+					"dist/img/credit_query.png",
+					"dist/img/grouping.png",
+					"dist/img/credit.png",
+					"dist/img/per_bg.png",
+					"dist/css/per_indx.css",
+					"dist/js/base.js",
+					"dist/img/recommend.png",
+					"dist/img/activity.png",
+					"dist/js/jquery-2.2.4.min.js",
+					"js/common.js",
+					"js/update.js",
+					"js/shortcut.js",
+					"js/immersed.js",
+					"pages/service/ser_index.html",
+					"dist/js/per_index.js"
+				],
+				"refer": [
+					"pages/person/per_inf.html",
+					"pages/person/application_list.html",
+					"pages/blank_page/webview_embed.html",
+					"pages/login/register.html"
+				],
+				"priority": 0
+			},
+			"main.html": {
+				"resources": [
+					"swipeslider/css/swipeslider.css",
+					"dist/img/recommend1.png",
+					"dist/img/broadcast.png",
+					"js/immersed.js",
+					"dist/js/base.js",
+					"dist/js/jquery-2.2.4.min.js",
+					"dist/js/vue_mian.js",
+					"dist/js/index1.js",
+					"js/common.js",
+					"dist/js/index.js",
+					"dist/js/ser_index.js",
+					"swipeslider/css/style.css",
+					"dist/css/index.css",
+					"swipeslider/js/swipeslider.min.js",
+					"js/shortcut.js",
+					"dist/img/service.png",
+					"dist/img/credit.png",
+					"dist/css/cre_index.css",
+					"dist/css/per_indx.css",
+					"dist/img/credit_query.png",
+					"dist/img/hot.png",
+					"css/common.css",
+					"dist/img/grouping1.png",
+					"dist/img/service1.png",
+					"dist/img/recommend.png",
+					"dist/img/credit1.png",
+					"dist/img/per_bg.png",
+					"js/mui.min.js",
+					"css/mui.min.css"
+				],
+				"refer": [
+					"pages/login/login.html",
+					"pages/credit/cre_dateils.html",
+					"pages/credit/cre_list.html",
+					"pages/blank_page/demo.html"
+				],
+				"priority": 0
+			},
+			"pages/service/ser_index.html": {
+				"resources": [
+					"dist/js/jquery-2.2.4.min.js",
+					"js/common.js",
+					"dist/js/ser_index.js",
+					"dist/img/service1.png",
+					"js/update.js",
+					"js/shortcut.js",
+					"js/immersed.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"guid_login.html": {
+				"resources": [],
+				"refer": [
+					"index.html",
+					"pages/login/register.html"
+				],
+				"priority": 0
+			},
+			"main_index.html": {
+				"resources": [
+					"main.html",
+					"dist/img/recommend.png",
+					"dist/img/grouping1.png"
+				],
+				"refer": [
+					"pages/credit/cre_index.html",
+					"pages/person/per_index.html"
+				],
 				"priority": 0
 			}
 		},

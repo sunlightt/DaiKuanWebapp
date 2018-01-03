@@ -2,9 +2,8 @@
 	/*-webkit-user-select: auto;*/
 	-ms-touch-select: auto;
 	-webkit-user-select: auto;
-	/*
-	-ms-touch-action: none;
-*/
+	-ms-touch-action: auto;
+
 }
 
 html {
@@ -61,7 +60,7 @@ header {
 .nvtt {
 	width: 70%;
 	height: 100%;
-	color: #1d1d1d;
+	color: #fff;
 	float: left;
 	overflow: hidden;
 	text-overflow: ellipsis;
@@ -420,7 +419,6 @@ a {
 	text-decoration: none;
 }
 
-
 /**/
 
 .parent {
@@ -428,9 +426,7 @@ a {
 	padding:0 0 .41rem;
 }
 
-
 /*footer*/
-
 .footer {
 	padding: 0 .11rem;
 	position: fixed;
@@ -502,4 +498,13 @@ a {
 .irefresh {
 	background: no-repeat center center url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABYCAYAAAADWlKCAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABx0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNui8sowAAAAWdEVYdENyZWF0aW9uIFRpbWUAMTEvMTAvMTUgEQA0AAAEP0lEQVR4nO3aTWhcVRTA8f+NQ6ImLqsu7MLuSiOt74SOoJBYDCp0UdG1BUVdWFBR/CiCLqzaClWhLlQUiqCIHwh1EUFqRyshMudRcVRcWdBFsZCVNQzEXhcz1ZeXaTOdN9N3Jp7f7t3J3JzmD52XvBtijDg7RsoewK3kQYzxIMZ4EGM8iDEexBgPYowHMcaDGONBjPEgxngQYzyIMR7EGA9ijAcxxoMY40GM8SDGeBBjPIgxHsQYD2KMBzHGgxjjQYzxIMZUyh6gF/V6fWsIYQa4A9gCbGy/9BvwIzAXYzw2NTX1fTf7qerDIvLGQIa9SGFYDls3Go2RZrO5C9gNbAeuXeMtp4DvgMNjY2OfTU5Onu30Rar6OPC8iFzV14F7NBRBVHUHcACQXrcAnhSRo7l9HwVeBRCRUGjIPjEdpFarhYmJiX3AM33a8qXFxcW9s7OzK2KAB1mTqo4C7wN3d3h5CfgSOA6cAP5or18NbANuAW4Drujw3neBBnAwu+hBLkBVLwM+ZHWMJeC1EMLbSZL8eqE90jS9Psb4APAYcPla39NKEKt3WS+wOoaGEB5MkiTtZoN2sL2q+inwFnBjn2ccCHO/h6jqNPB0bvkYMNNtjCwRqQM30bolNs9UkIWFhQrwem45BXaKyJ8Ftn4OuKbA+y8ZU/9lVSqVncDWzNJfwG4ROdPrnqr6CvBE0dkuFVNBgPtz14dEpNHrZqp6kNaH+tAwE6Rer28OIVQzS2dCCId62UtVR4B9tGL8Ddi7lTwPM0FCCLcDGzJLR5Mk6fWD+CzwJq3Po6GJAYaCxBjvDGHFrwK1XvcSEYCTBUcqhZm7rBDC5tz1D2XNUiYzQfjvT+gAxBhPlTVImSwFcdgK8nv2IoSw1vOOdclMkBjjT7nrG8qapUxmgoQQ5nJL06UMUjIzQYA54HTmekeaphvP98XrlZkgIvIzsJBZGo8x7ilrnrKYCdL2Tu56j6pOljJJSUwFWV5e/hzIHt25EjisquNF907TdGx+ft7Uv7cTUwNWq9Vl4JHccgIcKRJFVcdjjLXR0dFPGo3GaKEhB8xUEAARqQEv55ZvBWqqmlzsfqoqtA5DVIFdzWbzC1XdVHzSwTAXpO1Z4OPcmgDHVXV/Nz9QVd2kqvuBb2idRDlnBnioX4P2m8lTJwCqWgE+AO7p8PIS8BXwdQghjTGeBgghbIgxbgdupvWD73QM6CPgvoKPhAfGbBAAVQ3Ai6w+9NCrAyLyVJ/2GgjTQc4Z1FFSi4YiCPz7WPYu4F66P2z9LfAecEREOh62tmZogmSp6jZguv2UcQtwHa1HtSeBX2j9GaYmIifKm7I3QxlkPbN62/u/5UGM8SDGeBBjPIgxHsQYD2KMBzHGgxjjQYzxIMZ4EGM8iDEexBgPYowHMcaDGONBjPEgxngQYzyIMR7EGA9ijAcxxoMY40GM8SDG/AOZAi+0sACgewAAAABJRU5ErkJggg==);
 	background-size: 50px 44px;
+}
+
+
+/*底部tab图标*/
+
+.mui-bar .mui-icon img{
+    display:block;
+    width:100%;
+    height:100%;
 }

@@ -14,166 +14,215 @@
 	</head>
 
 	<body>
-		<header id="header">
-			<div id="back" style="visibility:hidden"  class="nvbt iback" onclick="plus.runtime.quit()"></div>
-			<div class="nvtt">信用贷款</div>
-			<!--<div class="nvbt iabout" onclick="clicked('about.html','zoom-fade-out',true)"></div>-->
-		</header>
-		<div class="parent">
+		<div class="parent" id="credit_inf">
 			<!--content-->
-			<div class="content head_top">
-				<div class="tab">
-					<ul class="list">
-						<li class="active">
-							<span>热门推荐</span>
-						</li>
-
-						<li>
-							<span>信用卡贷</span>
-						</li>
-					</ul>
-				</div>
-			</div>
-
-			<!--list-->
-			<div class="container">
-				<!--贷款搜索-->
-				<div class="content">
-					<ul class="credit_list_inf">
-						<li class="green">
-							<span>7天小额周转</span>
-						</li>
-						<li class="blue">
-							<span>有身份证和手机号就能贷</span>
-						</li>
-						<li class="pink">
-							<span>有支付宝，淘宝就能贷</span>
-						</li>
-						<li class="yellow">
-							<span>人脸识别，征信良好就能贷</span>
-						</li>
-					</ul>
+			<!--正常显示-->
+			<div class="option_tab ser_option" v-if="count_type">
+				<!--content-->
+				<div class="content head_top">
+					<div class="tab ser_tab">
+						<ul class="list">
+							<li class="active">
+								<span>热门推荐</span>
+							</li>
+							<li>
+								<span>信用卡贷</span>
+							</li>
+						</ul>
+					</div>
 				</div>
 
-				<!--贷款推荐-->
 				<!--list-->
-				<div class="content">
-					<!--金额设置-->
-					<form action="javascript:;">
-						<div class="credit_set">
-							<ul class="set_inf">
-								<li>
-									<span class="inf">借款金额 （元）: </span>
-									<div class="input">
-										<input type="text" name='money' />
-										<span>元</span>
+				<div class="container">
+					<!--贷款搜索-->
+					<div class="content">
+						<ul class="credit_list_inf">
+							<li class="green" v-bind:class="{'blue':index==1,'pink':index==2,'yellow':index==3,}" onclick="clicked_canshu(this,'./cre_list.html')" title="热门推荐"  v-bind:credit_id="item.id" v-bind:ser_url="ser_url" v-for="(item , index) in pup_recom_list">
+								<span>{{item.tag}}</span>
+							</li>
+						</ul>
+					</div>
+
+					<!--贷款推荐-->
+					<!--list-->
+					<div class="content" style="display:none;">
+						<!--金额设置-->
+						<form action="javascript:;">
+							<div class="credit_set">
+								<ul class="set_inf">
+									<li>
+										<span class="inf">借款金额 （元）: </span>
+										<div class="input">
+											<input type="number" name='money' v-on:input="inputvalue()" v-model="loan_mount" />
+											<span>元</span>
+										</div>
+									</li>
+									<li>
+										<span class="inf">分期期限 （月）:</span>
+										<div class="input">
+											<!--<input type="text" name='date' placeholder="不限" />-->
+											<select v-on:change="changeselect()" v-model="term">
+												<option v-bind:value="select_date[index]" v-for="(item , index) in date_arr">{{item}}</option>
+											</select>
+											<span>月</span>
+										</div>
+									</li>
+								</ul>
+							</div>
+						</form>
+						<ul class="credit_list">
+							<li onclick="clicked_canshu(this,'./cre_dateils.html')" v-for="(item , index) in credit_search_list" v-bind:title="item.pro_name"  v-bind:credit_id="item.id">
+								<div class="line"></div>
+								<div class="top">
+									<div class="stages">
+										<div class="left">
+											<img v-bind:src="item.pro_img" alt="" class="img_icon" />
+											<span>{{item.pro_name}}</span>
+										</div>
+										<div class="right">
+											<span>{{item.apply_num}}人已申请</span>
+											<img src="../../dist/img/hot.png" alt="" />
+										</div>
 									</div>
-								</li>
-								<li>
-									<span class="inf">借款金额 （元）:</span>
-									<div class="input">
-										<input type="text" name='date' placeholder="不限" />
-										<span>月</span>
+									<div class="rate">
+										<span class="left" v-if="item.is_rate==1">日利率  <i>{{item.rate}}%</i></span>
+										<span class="left" v-else>月利率  <i>{{item.rate}}%</i></span>
+										<span class="center">额度  <i>{{item.min_money}}-{{item.max_money}}元</i> </span>
+										<span class="right">成功率  <i>{{item.success_rate}}%</i></span>
 									</div>
-								</li>
-							</ul>
+								</div>
+								<!--<div class="bottom">
+									<span class="" v-for="(msg , i) in item.pro_des" v-bind:class="{'mortgage':i==0,'grant':i==1}">{{msg}}</span>
+									<span class="grant">30分钟快速放款!</span>
+								</div>-->
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+
+			<!--测试账号登录显示的类型-->
+			<div class="test_type" v-else>
+
+				<!--输入值-->
+				<div class="box">
+					<div class="val_type">
+						<!--<h2>录入计算</h2>-->
+						<div class="item">
+							<div class="left">
+								<span>金额</span>
+							</div>
+							<div class="right">
+								<input type="number" name="count" placeholder="金额" v-model="account_val" v-on:input="input_count" />
+							</div>
 						</div>
-					</form>
-					<ul class="credit_list">
-						<li>
-							<div class="line"></div>
-							<div class="top">
-								<div class="stages">
-									<div class="left">
-										<img src="../../dist/img/activity.png" alt="" class="img_icon" />
-										<span>够范分期</span>
-									</div>
-									<div class="right">
-										<span>50160人已申请</span>
-										<img src="../../dist/img/hot.png" alt="" />
-									</div>
-								</div>
-								<div class="rate">
-									<span class="left">日利率  <i>0.05%</i></span>
-									<span class="center">额度  <i>1000-10000元</i> </span>
-									<span class="right">成功率  <i>98%</i></span>
+						<div class="item">
+							<div class="left">
+								<span>期限</span>
+							</div>
+							<div class="right division">
+								<input type="number" name="count" placeholder="期限" v-model="term" v-on:input="input_term" />
+								<div class="select_wrap">
+									<select v-on:change="changeselect()" v-model="term_aim">
+										<option v-bind:value="item" v-for="(item , index) in term_type">{{item}}</option>
+									</select>
 								</div>
 							</div>
-							<div class="bottom">
-								<span class="mortgage">无抵押</span>
-								<span class="grant">30分钟快速放款!</span>
+						</div>
+						<div class="item">
+							<div class="left">
+								<span>利率</span>
 							</div>
-						</li>
-						<li>
-							<div class="line"></div>
-							<div class="top">
-								<div class="stages">
-									<div class="left">
-										<img src="../../dist/img/activity.png" alt="" class="img_icon" />
-										<span>够范分期</span>
-									</div>
-									<div class="right">
-										<span>50160人已申请</span>
-										<img src="../../dist/img/hot.png" alt="" />
-									</div>
-								</div>
-								<div class="rate">
-									<span class="left">日利率  <i>0.05%</i></span>
-									<span class="center">额度  <i>1000-10000元</i> </span>
-									<span class="right">成功率  <i>98%</i></span>
+							<div class="right division">
+								<input type="number" name="count" placeholder="利率" v-model="rate" v-on:input="input_rate" />
+								<div class="select_wrap month_rate">
+									<span>{{term_aim}}</span>
 								</div>
 							</div>
-							<div class="bottom">
-								<span class="mortgage">无抵押</span>
-								<span class="grant">30分钟快速放款!</span>
-							</div>
-						</li>
+						</div>
+					</div>
+					<!--foot-->
+					<div class="foot">
+						<ul>
+							<li class="repayment">
+								<strong>{{repayment}}元</strong>
+								<span>{{term_aim}}还款</span>
+							</li>
+							<li class="Total_interest">
+								<strong>{{Total_interest}}元</strong>
+								<span>总利息</span>
+							</li>
+						</ul>
+					</div>
+				</div>
 
-					</ul>
+				<!--计算值-->
+				<!--<div class="account">
+                	<h3>计算结果</h3>
+                	<div class="item">
+                		<div class="left">
+	                		<span>{{term_aim}}还款</span>
+	                	</div>
+	                	<div class="right">
+	                		<span>{{repayment}}元</span>
+	                	</div>
+                	</div>
+                	<div class="item">
+                		<div class="left">
+	                		<span>总利息</span>
+	                	</div>
+	                	<div class="right">
+	                		<span>{{Total_interest}}元</span>
+	                	</div>
+                	</div>
+                </div>-->
 
+				<!--公式展示-->
+				<!--<div class="formula">
+					<h3>计算公式</h3>
+					<div class="item">
+						<div class="left">
+							<span>月还款</span>
+						</div>
+						<div class="right">
+							<span>【借款本金×利率×（1＋利率）^还款期数】/【（1＋利率）^还款期数－1】</span>
+						</div>
+					</div>
+					<div class="item">
+						<div class="left">
+							<span>总利息</span>
+						</div>
+						<div class="right">
+							<span>月还款额*还款期数-本金</span>
+						</div>
+					</div>
+				</div>-->
+				<div class="process">
+					<div class="option">
+						<h2>计算公式</h2>
+						<div class="msg">
+							<p>月还款:【借款本金×利率×（1＋利率）^还款期数】/【（1＋利率）^还款期数－1】</p>
+							<p>总利息 :月还款额*还款期数-本金</p>
+						</div>
+					</div>
 				</div>
 
 			</div>
 
 		</div>
-
-		<!--footer-->
-		<div class="footer">
-			<ul>
-				<li>
-					<a href="../../index.html">
-						<img src="../../dist/img/recommend.png" alt="" />
-					</a>
-				</li>
-				<li>
-					<a href="javascript:;">
-						<img src="../../dist/img/credit1.png" alt="" />
-					</a>
-				</li>
-				<li>
-					<a href="../service/ser_index.html">
-						<img src="../../dist/img/service.png" alt="" />
-					</a>
-				</li>
-				<li>
-					<a href="../person/per_index.html">
-						<img src="../../dist/img/grouping1.png" alt="" />
-					</a>
-				</li>
-			</ul>
-		</div>
-
 	</body>
+
+	<script type="text/javascript" src="../../dist/js/jquery-2.2.4.min.js"></script>
+	<script type="text/javascript" src="../../dist/js/vue_mian.js"></script>
+	<script type="text/javascript" src="../../dist/js/base.js"></script>
 
 	<script type="text/javascript" src="../../js/common.js"></script>
 	<script type="text/javascript" src="../../js/update.js"></script>
-	<script type="text/javascript" src="../../js/immersed.js"></script>
+	<!--<script type="text/javascript" src="../../js/immersed.js"></script>-->
 	<script type="text/javascript" src="../../js/shortcut.js"></script>
-	
+
 	<!---->
-	<script type="text/javascript" src="../../dist/js/jquery-2.2.4.min.js"></script>
 
 	<script type="text/javascript" src="../../dist/js/cre_index.js"></script>
-
 
 </html>

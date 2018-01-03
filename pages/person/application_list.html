@@ -16,32 +16,34 @@
 	<body>
 		<header id="header">
 			<div id="back"  class="nvbt iback" onclick="back()"></div>
-			<div class="nvtt">信用贷款</div>
-			<!--<div class="nvbt iabout" onclick="clicked('about.html','zoom-fade-out',true)"></div>-->
+			<div class="nvtt">必须金服</div>
 		</header>
 		<div class="parent" id="application_list">
 			<div class="container">
 				<ul>
 					<li v-for="(item , index) in data_list">
 				         <div class="left">
-				         	<span>贷款金额</span>
-				         	<span>{{item.dai_money}}元</span>
+				         	<span v-if="count_type">贷款金额</span>
+				         	<span v-else>记账金额</span>
+				         	<span class="count_val">{{item.dai_money}}元</span>
+				         </div>
+				         <div class="middle">
+				         	<span v-if="count_type">贷款期限</span>
+				         	<span v-else>记账期限</span>
+				         	<span v-if="item.is_sel_day==1">{{item.dai_time}}日</span>
+				         	<span v-else>{{item.dai_time}}月</span>
 				         </div>
 				         <div class="right">
-				         	<span>贷款期限</span>
-				         	<span>{{item.dai_time}}个月</span>
+				         	<span>时间</span>
+				         	<span>{{formatDateTime({ "inputTime": item.ctime* 1000, "type": "all" })}}</span>
+				         </div>
+				         <div class="right foot">
+				         	<span v-if="count_type">还款期限</span>
+				         	<span v-else>剩余期限</span>
+				         	<span v-if="item.is_sel_day==1" v-bind:class="{'warning':item.term<=7}">{{item.term>=0 ? '剩余'+item.term+'日' : '逾期'+(-item.term)+'日'}}</span>
+				         	<span v-else v-bind:class="{'warning':item.term<=30}">{{item.term>=0 ? '剩余'+item.term+'日' : '逾期'+(-item.term)+'日'}}</span>
 				         </div>
 					</li>
-					<!--<li>
-				         <div class="left">
-				         	<span>贷款金额</span>
-				         	<span>1000元</span>
-				         </div>
-				         <div class="right">
-				         	<span>贷款期限</span>
-				         	<span>3个月</span>
-				         </div>
-					</li>-->
 				</ul>
 			</div>
 		</div>
@@ -55,7 +57,6 @@
 	<script type="text/javascript" src="../../js/update.js"></script>
 	<script type="text/javascript" src="../../js/immersed.js"></script>
 	<script type="text/javascript" src="../../js/shortcut.js"></script>
-	
 	
 	<script type="text/javascript" src="../../dist/js/application_list.js"></script>
 	
